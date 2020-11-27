@@ -12,14 +12,18 @@ namespace The_Blob.Controllers
     { 
         private readonly BlobContext _context;
 
-    public WelcomeController(BlobContext context)
-    {
-        _context = context;
-    }
-
-    public IActionResult Index()
+        public WelcomeController(BlobContext context)
         {
-            return View();
+            _context = context;
+        }
+
+        public IActionResult Index()
+        {
+            return View("Index");
+        }
+        public IActionResult Singup()
+        {
+            return View("Singup");
         }
         // POST: Sign up- Create new user
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
@@ -32,21 +36,29 @@ namespace The_Blob.Controllers
             {
                 _context.Add(user);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Singup", "Welcome");
             }
-            return RedirectToAction("Index", "Welcome");
+            return View(user);
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Login([Bind("UserId,Email,Password")] User user)
+        public IActionResult Login([Bind("UserId,Email,Password")] User user)
         {
-            if (ModelState.IsValid)
+            bool result = _context.User.Where(x => x.Email == user.Email && x.Password == user.Password).Any();
+
+            if (ModelState.IsValid && result)
             {
-                _context.Add(user);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Index", "Characters");
             }
-            return RedirectToAction("Index", "Characters");
+            else if (!result)
+            {
+                ModelState.AddModelError("Email", "Enter a valid login credential");
+                ModelState.AddModelError("Password", "Enter a valid login credential");
+            }
+            else{ 
+                return View("Index",user);
+            }
+            return View("Index", user);
         }
     }
 }

@@ -2,19 +2,21 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using The_Blob.Data;
 
 namespace The_Blob.Migrations
 {
     [DbContext(typeof(BlobContext))]
-    partial class BlobContextModelSnapshot : ModelSnapshot
+    [Migration("20201127073455_SleepBool")]
+    partial class SleepBool
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "3.1.10")
+                .HasAnnotation("ProductVersion", "3.1.9")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -43,12 +45,7 @@ namespace The_Blob.Migrations
                     b.Property<int>("Sleep")
                         .HasColumnType("int");
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
-
                     b.HasKey("CharacterId");
-
-                    b.HasIndex("UserId");
 
                     b.ToTable("Character");
                 });
@@ -124,6 +121,9 @@ namespace The_Blob.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int>("CharacterId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Email")
                         .HasColumnType("nvarchar(max)");
 
@@ -135,16 +135,9 @@ namespace The_Blob.Migrations
 
                     b.HasKey("UserId");
 
-                    b.ToTable("User");
-                });
+                    b.HasIndex("CharacterId");
 
-            modelBuilder.Entity("The_Blob.Models.Character", b =>
-                {
-                    b.HasOne("The_Blob.Models.User", "user")
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.ToTable("User");
                 });
 
             modelBuilder.Entity("The_Blob.Models.CharacterFridge", b =>
@@ -158,6 +151,15 @@ namespace The_Blob.Migrations
                     b.HasOne("The_Blob.Models.Fridge", "fridge")
                         .WithMany()
                         .HasForeignKey("FridgeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("The_Blob.Models.User", b =>
+                {
+                    b.HasOne("The_Blob.Models.Character", "character")
+                        .WithMany()
+                        .HasForeignKey("CharacterId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

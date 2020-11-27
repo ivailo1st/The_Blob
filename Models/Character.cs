@@ -9,10 +9,14 @@ namespace The_Blob.Models {
     {
         public int CharacterId { get; set; }
         public string Name { get; set; }
-        public int Hunger { get; set; }
-        public int Sleep { get; set; }
-        public int Fun { get; set; }
-        public int Currency { get; set; }
+        public int Hunger { get; set; } = 100;
+        public int Sleep { get; set; } = 100;
+        public bool Awake { get; set; } = true;
+        public int Fun { get; set; } = 100;
+        public int Currency { get; set; } = 500;
+
+        public int UserId { get; set; }
+        public virtual User user { get; set; }
 
         public void CharacterCreation()
         {

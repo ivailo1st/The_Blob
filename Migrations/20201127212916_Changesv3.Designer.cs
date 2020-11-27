@@ -9,7 +9,7 @@ using The_Blob.Data;
 namespace The_Blob.Migrations
 {
     [DbContext(typeof(BlobContext))]
-    [Migration("20201127204211_Changesv3")]
+    [Migration("20201127212916_Changesv3")]
     partial class Changesv3
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -125,6 +125,10 @@ namespace The_Blob.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("ConfirmPassword")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Email")
                         .IsRequired()

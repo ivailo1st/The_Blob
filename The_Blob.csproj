@@ -6,6 +6,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Migrations\20201127204211_Changesv3.cs" />
+    <Compile Remove="Migrations\20201127204211_Changesv3.Designer.cs" />
     <Compile Remove="Models\Char_Fridge.cs" />
     <Compile Remove="Models\Products.cs" />
   </ItemGroup>

@@ -32,13 +32,18 @@ namespace The_Blob.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Signup([Bind("UserId,Email,Password,Name")] User user)
         {
-            if (ModelState.IsValid)
+            bool result = _context.User.Where(x => x.Email == user.Email).Any();
+            if (ModelState.IsValid && !result)
             {
                 _context.Add(user);
                 await _context.SaveChangesAsync();
-                return RedirectToAction("Singup", "Welcome");
+                return RedirectToAction("Index", "Welcome");
             }
-            return View(user);
+            else if (result)
+            {
+                ModelState.AddModelError("Email", "Login already exists");
+            }
+            return View("Singup", user);
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -54,9 +59,6 @@ namespace The_Blob.Controllers
             {
                 ModelState.AddModelError("Email", "Enter a valid login credential");
                 ModelState.AddModelError("Password", "Enter a valid login credential");
-            }
-            else{ 
-                return View("Index",user);
             }
             return View("Index", user);
         }

@@ -21,10 +21,20 @@ namespace The_Blob.Migrations
                 oldClrType: typeof(string),
                 oldType: "nvarchar(max)",
                 oldNullable: true);
+
+            migrationBuilder.AddColumn<string>(
+                name: "ConfirmPassword",
+                table: "User",
+                nullable: false,
+                defaultValue: "");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropColumn(
+                name: "ConfirmPassword",
+                table: "User");
+
             migrationBuilder.AlterColumn<string>(
                 name: "Password",
                 table: "User",

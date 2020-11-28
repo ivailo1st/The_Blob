@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using The_Blob.Models;
 using The_Blob.Data;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Data.SqlClient;
 
 namespace The_Blob.Controllers
 {
@@ -30,12 +32,17 @@ namespace The_Blob.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Signup([Bind("UserId,Email,Password,Name")] User user)
+        public async Task<IActionResult> Signup([Bind("testUser,testChar")] Combiner combiner)
         {
-            bool result = _context.User.Where(x => x.Email == user.Email).Any();
+            bool result = _context.User.Where(x => x.Email == combiner.user.Email).Any();
             if (ModelState.IsValid && !result)
             {
-                _context.Add(user);
+                SqlParameter param1 = new SqlParameter("@UserEmail", combiner.user.Email);
+                SqlParameter param2 = new SqlParameter("@UserPassword", combiner.user.Password);
+                SqlParameter param3 = new SqlParameter("@UserConfirmPassword", combiner.user.ConfirmPassword);
+                SqlParameter param4 = new SqlParameter("@CharacterName", combiner.character.Name);
+
+                _context.Database.ExecuteSqlRaw("createNewUser @UserEmail, @UserPassword, @UserConfirmPassword, @CharacterName", param1,param2,param3,param4);
                 await _context.SaveChangesAsync();
                 return RedirectToAction("Index", "Welcome");
             }
@@ -43,7 +50,7 @@ namespace The_Blob.Controllers
             {
                 ModelState.AddModelError("Email", "Login already exists");
             }
-            return View("Singup", user);
+            return View("Singup", combiner);
         }
         [HttpPost]
         [ValidateAntiForgeryToken]

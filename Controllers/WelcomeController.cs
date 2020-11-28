@@ -45,14 +45,13 @@ namespace The_Blob.Controllers
                 //Each one represents a different given value
                 SqlParameter param1 = new SqlParameter("@UserEmail", combiner.user.Email);
                 SqlParameter param2 = new SqlParameter("@UserPassword", combiner.user.Password);
-                SqlParameter param3 = new SqlParameter("@UserConfirmPassword", combiner.user.ConfirmPassword);
-                SqlParameter param4 = new SqlParameter("@CharacterName", combiner.character.Name);
+                SqlParameter param3 = new SqlParameter("@CharacterName", combiner.character.Name);
 
                 //A dbcontext function that is cable of executing raw sql code in mvc
                 //Here it executes a stored procedure using the variables from before
-                _context.Database.ExecuteSqlRaw("createNewUser @UserEmail, @UserPassword, @UserConfirmPassword, @CharacterName", param1,param2,param3,param4);
+                _context.Database.ExecuteSqlRaw("createNewUser @UserEmail, @UserPassword, @CharacterName", param1,param2,param3);
                 await _context.SaveChangesAsync();
-                return RedirectToAction("Index", "Welcome");
+                return View("Index");
             }
             else if (result)
             {
@@ -62,20 +61,19 @@ namespace The_Blob.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Login([Bind("UserId,Email,Password")] User user)
+        public async Task<IActionResult> Login([Bind("UserId,Email,Password")] User user)
         {
-            bool result = _context.User.Where(x => x.Email == user.Email && x.Password == user.Password).Any();
-
+            bool result = _context.User.Where(x => (x.Email == user.Email) && (x.Password == user.Password)).Any();
             if (ModelState.IsValid && result)
             {
                 return RedirectToAction("Index", "Characters");
             }
-            else if (!result)
+            else
             {
                 ModelState.AddModelError("Email", "Enter a valid login credential");
                 ModelState.AddModelError("Password", "Enter a valid login credential");
+                return View("Index");
             }
-            return View("Index", user);
         }
     }
 }

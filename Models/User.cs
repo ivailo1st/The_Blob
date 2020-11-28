@@ -15,9 +15,6 @@ namespace The_Blob.Models
         public string Email { get; set; }
         [Required(ErrorMessage = "You must enter a password")]
         public string Password { get; set; }
-        [Required(ErrorMessage = "You must enter a password")]
-        [Compare(nameof(Password), ErrorMessage = "Passwords don't match.")]
-        public string ConfirmPassword { get; set; }
 
         public void CreateUser()
         {

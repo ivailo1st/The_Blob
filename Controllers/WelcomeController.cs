@@ -32,7 +32,7 @@ namespace The_Blob.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Signup([Bind("testUser,testChar")] Combiner combiner)
+        public async Task<IActionResult> Signup([Bind("user,character")] Combiner combiner)
         {
             bool result = _context.User.Where(x => x.Email == combiner.user.Email).Any();
             if (ModelState.IsValid && !result)
@@ -48,7 +48,7 @@ namespace The_Blob.Controllers
             }
             else if (result)
             {
-                ModelState.AddModelError("Email", "Login already exists");
+                ModelState.AddModelError("user.Email", "Login already exists");
             }
             return View("Singup", combiner);
         }

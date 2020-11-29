@@ -1,0 +1,9 @@
+﻿@model The_Blob.Models.User
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Index</h1>
+<p>Current session id: @Model.UserId; email: @Model.Email; password: @Model.Password</p>
+<p><a asp-controller="Welcome" asp-action="Logout">Logout</a> </p>

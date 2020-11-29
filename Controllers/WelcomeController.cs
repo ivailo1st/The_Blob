@@ -7,11 +7,14 @@ using The_Blob.Models;
 using The_Blob.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Data.SqlClient;
+using Microsoft.AspNetCore.Http;
+using The_Blob.Infrastructure;
 
 namespace The_Blob.Controllers
 {
     public class WelcomeController : Controller
-    { 
+    {
+
         private readonly BlobContext _context;
 
         public WelcomeController(BlobContext context)
@@ -27,6 +30,12 @@ namespace The_Blob.Controllers
         {
             return View("Singup");
         }
+        public IActionResult Logout()
+        {
+            HttpContext.Session.Logout();
+            return View("Index");
+        }
+
         // POST: Sign up- Create new user
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
@@ -66,7 +75,22 @@ namespace The_Blob.Controllers
             bool result = _context.User.Where(x => (x.Email == user.Email) && (x.Password == user.Password)).Any();
             if (ModelState.IsValid && result)
             {
-                return RedirectToAction("Index", "Characters");
+                //Local Variable that serve as a way to assign specific values to the raw sql query after them
+                SqlParameter param1 = new SqlParameter("@UserEmail", user.Email);
+
+                //A dbcontext function that is cable of executing raw sql code in mvc
+                //Here it extracts all data of the user from the database
+                var userID = _context.User.FromSqlRaw("Select * from [user] where email = @UserEmail", param1).FirstOrDefault();
+
+                //Variable used to check whether there is an already assigned variable to the session key
+                User sessionUser = HttpContext.Session.GetJson<User>("User");
+                if (sessionUser == null)
+                {
+                    //If there is not it assigns it the data we got from the sql query
+                    HttpContext.Session.SetJson("User", userID);
+                }
+                
+                return RedirectToAction("Index", "MainMenu");
             }
             else
             {

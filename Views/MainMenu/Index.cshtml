@@ -1,9 +1,0 @@
-﻿@model The_Blob.Models.User
-@{
-    ViewData["Title"] = "Index";
-    ViewData["UserID"] = Model.UserId;
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
-
-<h1>Index</h1>
-<p>Current session id: @Model.UserId; email: @Model.Email; password: @Model.Password</p>

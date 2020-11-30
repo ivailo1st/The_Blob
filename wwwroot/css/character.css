@@ -1,6 +1,10 @@
-﻿.topMenuComponent{
+﻿.topMenuComponent {
     display: grid;
-    grid-template-columns: auto auto auto auto auto;
+    grid-template-columns: 1fr 0.15fr 0.15fr 0.15fr 1fr;
+}
+
+.topMenuComponent--userAccount {
+    justify-self: self-end;
 }
 
 .topMenuComponent--charCurrency-textCurrency, .topMenuComponent--userAccount-letterAccount {
@@ -45,6 +49,19 @@
 .topMenuComponent--statBars-barImage {
     margin-top:5rem;
     position: absolute;
+}
+
+@media only screen and (max-width: 768px) {
+    .topMenuComponent {
+        grid-template-columns: 1fr 0.45fr 0.45fr 0.45fr 1fr;
+    }
+}
+
+@media only screen and (max-width: 425px) {
+    .topMenuComponent {
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    }
+
 }
 
 #Character {

@@ -1,9 +1,18 @@
 ﻿@model The_Blob.Models.User
 @{
     ViewData["Title"] = "Login";
+    Layout = null;
 }
-
-<h1>Index</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - The_Blob</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body class="bg-yellow"></body>
 <div class="row justify-content-center">
     <div class="col-5 col-md-3 justify-content-center"
     <h1 class="strongs">The Blob</h1>
@@ -24,11 +33,12 @@
         </div>
 
     <div class="form-group">
-        <input type="submit" value="Login" class="btn btn-primary" />
+        <input type="submit" value="Login" class="LOGSIG-btn strongs strongs-p" />
     </div>
 </form>
-    <p>New User? <a asp-controller="Welcome" asp-action="Singup">Sing Up</a> </p>
+    <p class="strongs strongs-p">New User? <a asp-controller="Welcome" asp-action="Singup" class="strongs strongs-b">Sign Up</a> </p>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
+    </body>

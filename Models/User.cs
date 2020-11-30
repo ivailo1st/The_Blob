@@ -1,5 +1,4 @@
 ﻿using System;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -15,7 +14,7 @@ namespace The_Blob.Models
         [Required(ErrorMessage = "You must enter email")]
         public string Email { get; set; }
         [Required(ErrorMessage = "You must enter a password")]
-        public string Password { get; set; } 
+        public string Password { get; set; }
 
         public void CreateUser()
         {

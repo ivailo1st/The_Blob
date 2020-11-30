@@ -1,0 +1,28 @@
+﻿@model IEnumerable<The_Blob.Models.Fridge>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<head>
+    <link href="../style/" rel="stylesheet" />
+</head>
+<section class="fridge-component">
+
+    @foreach (var item in Model)
+    {
+        <ul class="fridge-item">
+            <li class="fridge-quantity">
+                @Html.DisplayFor(modelItem => item.Quantity)
+            </li>
+            <li class="fridge-image">
+                <img src="#" alt="Alternate Text" />
+            </li>
+            <li class="fridge-percentage">
+                @Html.DisplayFor(modelItem => item.HungerPercentage)
+            </li>
+        </ul>
+    }
+
+</section>
+
+<script type="text/javascript" src="~/scripts/main.js"></script>

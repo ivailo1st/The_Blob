@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -8,6 +9,7 @@ namespace The_Blob.Models {
     public class Character
     {
         public int CharacterId { get; set; }
+        [Required(ErrorMessage = "You must enter a Name")]
         public string Name { get; set; }
         public int Hunger { get; set; } = 100;
         public int Sleep { get; set; } = 100;
@@ -17,7 +19,6 @@ namespace The_Blob.Models {
 
         public int UserId { get; set; }
         public virtual User user { get; set; }
-
         public void CharacterCreation()
         {
 

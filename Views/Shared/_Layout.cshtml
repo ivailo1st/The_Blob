@@ -18,12 +18,17 @@
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
                     <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
+                        @{
+                            if (ViewData["UserID"] != null)
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-controller="Welcome" asp-action="Logout">Logout</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-controller="Users" asp-action="Edit" asp-route-id="@ViewData["UserID"]">Edit Account</a>
+                                </li>
+                            }
+                        }
                     </ul>
                 </div>
             </div>

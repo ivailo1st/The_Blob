@@ -111,7 +111,7 @@ namespace The_Blob.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Index","MainMenu");
             }
             return View(user);
         }

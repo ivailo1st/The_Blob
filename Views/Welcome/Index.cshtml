@@ -23,15 +23,11 @@
             <span asp-validation-for="Password" class="text-danger"></span>
         </div>
 
-        <br />
-        <div class="form-group">
-            <input type="submit" value="Login" class="LOGSIG-btn" />
-        </div>
-        <br />
-
-
-    </form>
-     <p>New User? <a asp-controller="Welcome" asp-action="Singup">Sing Up</a> </p>
+    <div class="form-group">
+        <input type="submit" value="Login" class="btn btn-primary" />
+    </div>
+</form>
+    <p>New User? <a asp-controller="Welcome" asp-action="Singup">Sing Up</a> </p>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

@@ -26,6 +26,8 @@ namespace The_Blob
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            services.AddSession();
+            services.AddMemoryCache();
 
             services.AddDbContext<BlobContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("BlobContext")));
@@ -48,6 +50,7 @@ namespace The_Blob
             app.UseStaticFiles();
 
             app.UseRouting();
+            app.UseSession();
 
             app.UseAuthorization();
 

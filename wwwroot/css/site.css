@@ -69,3 +69,59 @@ body {
   white-space: nowrap;
   line-height: 60px; /* Vertically center the text there */
 }
+
+
+.bg-yellow {
+    background-color: #FDF1D8;
+}
+
+input[type=text] {
+    border: none;
+    border-bottom: 2px solid #657B70;
+    background-color: transparent;
+    background: transparent;
+    border-radius: 0px;
+    width: 279px;
+}
+
+    input[type=text]:focus {
+        background-color: transparent;
+        box-shadow: none;
+        border-bottom-color: #657B70;
+    }
+
+.LOGSIG-btn {
+    background-color: #BEDFC4;
+    width: 250px;
+    height: 60px;
+    font-size: 22px;
+    border-radius: 17px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border: none;
+    margin-left: 15px;
+}
+
+.grid-item1 {
+    grid-area: 2 / 2 / 3 / 3;
+}
+
+.strongs {
+    font-family: Public Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 35px;
+    color: #657B70;
+}
+
+.strongs-p {
+    font-weight: normal;
+    font-size: 22px;
+    text-align: center;
+}
+
+.strongs-b {
+    margin-left: 5px;
+    font-weight: bold;
+    font-size: 22px;
+    text-decoration-line: underline;
+}

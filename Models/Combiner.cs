@@ -9,5 +9,11 @@ namespace The_Blob.Models
     {
         public User user { get; set; }
         public Character character { get; set; }
+
+        public Combiner(User User,Character Character)
+        {
+            user = User;
+            character = Character;
+        }
     }
 }

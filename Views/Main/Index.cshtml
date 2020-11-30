@@ -1,7 +1,7 @@
-﻿@model The_Blob.Models.User
+﻿@model The_Blob.Models.Combiner
 @{
     ViewData["Title"] = "Index";
-    ViewData["UserID"] = Model.UserId;
+    ViewData["UserID"] = Model.user.UserId;
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -10,8 +10,9 @@
 
 </head>
 
-<h1>Index</h1>
-<p>Current session id: @Model.UserId; email: @Model.Email; password: @Model.Password</p>
+@{await Html.RenderPartialAsync("_TopMenuPartial");}
+
+<p>Current session id: @Model.user.UserId; email: @Model.user.Email; password: @Model.user.Password</p>
 
 <div id="Container">
     <svg id="Character" x="0px" y="0px"

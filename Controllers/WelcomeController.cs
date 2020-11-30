@@ -80,14 +80,22 @@ namespace The_Blob.Controllers
 
                 //A dbcontext function that is cable of executing raw sql code in mvc
                 //Here it extracts all data of the user from the database
-                var userID = _context.User.FromSqlRaw("Select * from [user] where email = @UserEmail", param1).FirstOrDefault();
+                User userData = _context.User.FromSqlRaw("Select * from [user] where email = @UserEmail", param1).FirstOrDefault();
+
+                SqlParameter param2 = new SqlParameter("@UserID", userData.UserId);
+
+                Character characterData = _context.Character.FromSqlRaw("Select * from character where userid = @UserID", param2).FirstOrDefault();
 
                 //Variable used to check whether there is an already assigned variable to the session key
                 User sessionUser = HttpContext.Session.GetJson<User>("User");
-                if (sessionUser == null)
+                Character sessionCharacter = HttpContext.Session.GetJson<Character>("Character");
+
+                if (sessionUser == null || sessionCharacter == null)
                 {
                     //If there is not it assigns it the data we got from the sql query
-                    HttpContext.Session.SetJson("User", userID);
+                    HttpContext.Session.SetJson("User", userData);
+                    HttpContext.Session.SetJson("Character", characterData);
+
                 }
                 
                 return RedirectToAction("Index", "Main");

@@ -14,8 +14,10 @@ namespace The_Blob.Controllers
         public IActionResult Index()
         {
             //Gets data assigned to session key and sends it to the view
-            User user = HttpContext.Session.GetJson<User>("User");
-            return View(user);
+            User sessionUser = HttpContext.Session.GetJson<User>("User");
+            Character sessionCharacter = HttpContext.Session.GetJson<Character>("Character");
+            Combiner combined = new Combiner(sessionUser, sessionCharacter);
+            return View(combined);
         }
     }
 }

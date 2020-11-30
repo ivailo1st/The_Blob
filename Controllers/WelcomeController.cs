@@ -90,7 +90,7 @@ namespace The_Blob.Controllers
                     HttpContext.Session.SetJson("User", userID);
                 }
                 
-                return RedirectToAction("Index", "MainMenu");
+                return RedirectToAction("Index", "Main");
             }
             else
             {

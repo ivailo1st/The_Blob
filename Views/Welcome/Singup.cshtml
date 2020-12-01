@@ -1,34 +1,51 @@
 ﻿@model The_Blob.Models.Combiner
 @{
     ViewData["Title"] = "Signup";
+    Layout = null;
 }
 
-<h1>Index</h1>
-<form asp-action="Signup">
-    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-    <div class="form-group">
-        <label asp-for="user.Email" class="control-label"></label>
-        <input asp-for="user.Email" class="form-control" />
-        <span asp-validation-for="user.Email" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <label asp-for="user.Password" class="control-label"></label>
-        <input asp-for="user.Password" type="password" class="form-control" />
-        <span asp-validation-for="user.Password" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <label asp-for="character.Name" class="control-label"></label>
-        <input asp-for="character.Name" class="form-control" />
-        <span asp-validation-for="character.Name" class="text-danger"></span>
-    </div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - The_Blob</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body class="bg-yellow">
+    <div class="row justify-content-center">
+    <div class="col-5 col-md-3 justify-content-center">
+        <strong <class="strongs">Sign Up</strong>
+        <form asp-action="Signup">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="user.Email" class="control-label"></label>
+                <input asp-for="user.Email" class="form-control" />
+                <span asp-validation-for="user.Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="user.Password" class="control-label"></label>
+                <input asp-for="user.Password" type="password" class="form-control" />
+                <span asp-validation-for="user.Password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="character.Name" class="control-label"></label>
+                <input asp-for="character.Name" class="form-control" />
+                <span asp-validation-for="character.Name" class="text-danger"></span>
+            </div>
 
 
-    <div class="form-group">
-        <input type="submit" value="Sign up" class="btn btn-primary" />
+            <div class="form-group">
+                <input type="submit" value="Sign up" class="LOGSIG-btn" />
+            </div>
+        </form>
+        </div>
     </div>
-</form>
-    <p>Already a User? <a asp-action="Index">Login</a> </p>
+        <p class="strongs strongs-p">Already a User? <a asp-action="Index" class="strongs strongs-b">Login</a> </p>
 
+
+</body>
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }

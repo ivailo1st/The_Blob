@@ -6,12 +6,38 @@
 .topMenuComponent--userAccount {
     justify-self: self-end;
 }
-
-.topMenuComponent--charCurrency-textCurrency, .topMenuComponent--userAccount-letterAccount {
-    position: absolute;
-    font-size: 1.4rem;
-    font-weight: 500;
+.topMenuComponent--userAccount a{
+    text-decoration:none;
 }
+.topMenuComponent--userAccount-circleAccount {
+    width: 43px;
+    height: 43px;
+    border-radius: 50%;
+    text-align: center;
+    background: #BEDFC4;
+    border: 2px solid #657B70;
+    box-sizing: border-box;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+#letterAccount {
+    color:#000;
+    font-size: 1.6rem;
+    margin-top:1px;
+    font-weight: 500;
+    font-family: Aguafina Script;
+}
+
+.topMenuComponent--charCurrency-coin{
+    margin-left: 1px;
+}
+
+#textCurrency {
+    position: absolute;
+    font-size: 1.6rem;
+    font-family: Aguafina Script;
+}
+
 .topMenuComponent--statBars {
     display: flex;
     justify-self:center;
@@ -24,7 +50,7 @@
     height: 5.87rem;
     transform: rotate(180deg);
     background-color: #BDC3C7;
-    margin-left: 0.5rem;
+    margin-left: 0.38rem;
 }
 
 .topMenuComponent--statBars-bar #barColorSleeping{

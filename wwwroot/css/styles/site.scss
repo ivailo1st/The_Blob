@@ -7,34 +7,6 @@ a.navbar-brand {
   word-break: break-all;
 }
 
-/* Provide sufficient contrast against white background */
-a {
-  color: #0366d6;
-}
-
-.btn-primary {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
-}
-
-.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
-}
-
-/* Sticky footer styles
--------------------------------------------------- */
-html {
-  font-size: 14px;
-}
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
-}
-
 .border-top {
   border-top: 1px solid #e5e5e5;
 }
@@ -43,7 +15,7 @@ html {
 }
 
 .box-shadow {
-  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+  box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.05);
 }
 
 button.accept-policy {
@@ -51,60 +23,57 @@ button.accept-policy {
   line-height: inherit;
 }
 
-
-
 .bg-yellow {
-    background-color: #FDF1D8;
+  background-color: $beige;
 }
 
-input[type=text] {
-    border: none;
-    border-bottom: 2px solid #657B70;
-    background-color: transparent;
-    background: transparent;
-    border-radius: 0px;
-    width: 279px;
+input[type="text"] {
+  border: none;
+  border-bottom: 2px solid #657b70;
+  background-color: transparent;
+  background: transparent;
+  border-radius: 0px;
+  width: 279px;
 }
 
-    input[type=text]:focus {
-        background-color: transparent;
-        box-shadow: none;
-        border-bottom-color: #657B70;
-    }
+input[type="text"]:focus {
+  background-color: transparent;
+  box-shadow: none;
+  border-bottom-color: #657b70;
+}
 
 .LOGSIG-btn {
-    background-color: #BEDFC4;
-    width: 250px;
-    height: 60px;
-    font-size: 22px;
-    border-radius: 17px;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    border: none;
-    margin-left: 15px;
+  background-color: $light-green;
+  width: 250px;
+  height: 60px;
+  font-size: 22px;
+  border-radius: 17px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border: none;
+  margin-left: 15px;
 }
 
 .grid-item1 {
-    grid-area: 2 / 2 / 3 / 3;
+  grid-area: 2 / 2 / 3 / 3;
 }
 
 .strongs {
-    font-family: Public Sans;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 35px;
-    color: #657B70;
+  font-family: Public Sans;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 35px;
+  color: #657b70;
 }
 
 .strongs-p {
-    font-weight: normal;
-    font-size: 22px;
-    text-align: center;
+  font-weight: normal;
+  font-size: 22px;
+  text-align: center;
 }
 
 .strongs-b {
-    margin-left: 5px;
-    font-weight: bold;
-    font-size: 22px;
-    text-decoration-line: underline;
+  margin-left: 5px;
+  font-weight: bold;
+  font-size: 22px;
+  text-decoration-line: underline;
 }
-

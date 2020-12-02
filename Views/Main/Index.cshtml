@@ -1,4 +1,5 @@
 ﻿@model The_Blob.Models.Combiner
+
 @{
     ViewData["Title"] = "Index";
     ViewData["UserID"] = Model.user.UserId;
@@ -6,10 +7,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<head>
-    <link rel="stylesheet" href="~/css/character.css">
 
-</head>
 
 @{await Html.RenderPartialAsync("_TopMenuPartial");}
 
@@ -23,11 +21,13 @@
    C120.2,25,140.5,26.3,149.4,37.5z" />
 
 
+
  </svg>
     <div id="Shadow"></div>
 </div>
 
+@*@{await Html.RenderPartialAsync("_FridgePartial");}*@
 
-<script src="~/js/character.js"></script>
+
 
 

@@ -1,17 +1,9 @@
 ﻿@model The_Blob.Models.User
 @{
     ViewData["Title"] = "Login";
-    Layout = null;
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - The_Blob</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" />
-</head>
+
 <body class="bg-yellow">
     <div class="row justify-content-center">
         <div class="col-5 col-md-3 justify-content-center">
@@ -41,7 +33,6 @@
     </div>
     <p class="strongs strongs-p">New User? <a asp-controller="Welcome" asp-action="Singup" class="strongs strongs-b">Sign Up</a> </p>
 </body>
-</html>
 
 
 @section Scripts {

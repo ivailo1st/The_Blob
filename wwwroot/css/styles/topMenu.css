@@ -1,4 +1,6 @@
-﻿.topMenuComponent {
+﻿@import "variables.css";
+
+.topMenuComponent {
   display: grid;
   grid-template-columns: 1fr 0.15fr 0.15fr 0.15fr 1fr;
 }
@@ -55,26 +57,26 @@
   margin-left: 0.38rem;
 }
 
-.topMenuComponent--statBars-bar #barColorSleeping {
-  border-radius: 0.5rem;
-  width: 100%;
-  height: 90%;
-  background-color: $bar-sleep;
-}
+    .topMenuComponent--statBars-bar #barColorSleeping {
+        border-radius: 0.5rem;
+        width: 100%;
+        height: 90%;
+        background-color: #f46197;
+    }
 
-.topMenuComponent--statBars-bar #barColorHunger {
-  border-radius: 0.5rem;
-  width: 100%;
-  height: 50%;
-  background-color: $bar-hunger;
-}
+    .topMenuComponent--statBars-bar #barColorHunger {
+        border-radius: 0.5rem;
+        width: 100%;
+        height: 50%;
+        background-color: #f46197;
+    }
 
-.topMenuComponent--statBars-bar #barColorFun {
-  border-radius: 0.5rem;
-  width: 100%;
-  height: 20%;
-  background-color: $bar-fun;
-}
+    .topMenuComponent--statBars-bar #barColorFun {
+        border-radius: 0.5rem;
+        width: 100%;
+        height: 20%;
+        background-color: #f46197;
+    }
 
 .topMenuComponent--statBars-barImage {
   margin-top: 5rem;

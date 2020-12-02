@@ -2,25 +2,25 @@
 @*
     For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 *@
-<!--
+@model The_Blob.Models.Combiner
 
 
 
 <section class="fridge-section">
 
-    @foreach (var item in Model)
+    @foreach (var item in Model.fridge)
     {
         <ul class="fridge-item">
             <li class="fridge-quantity">
-                @item.fridge.Quantity;
+                @item.Quantity;
             </li>
             <li class="fridge-image">
                 <img src="#" alt="Alternate Text" />
             </li>
             <li class="fridge-percentage">
-                @item.fridge.HungerPercentage)
+                @item.HungerPercentage)
             </li>
         </ul>
     }
 
-</section>-->
+</section>

@@ -11,6 +11,7 @@ namespace The_Blob.Models
         public string FoodName { get; set; }
         public int HungerPercentage { get; set; }
         public int Quantity { get; set; }
+        public string ImageURL { get; set; }
         public void IncreaseHunger()
         {
 

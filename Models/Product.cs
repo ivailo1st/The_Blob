@@ -11,6 +11,7 @@ namespace The_Blob.Models
         public string ProductName { get; set; }
         public decimal ProductPrice { get; set; }
         public int ProductPercentage { get; set; }
+        public string ImageURL { get; set; }
 
         public void AddItem()
         {

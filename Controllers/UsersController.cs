@@ -4,8 +4,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using The_Blob.Data;
+using The_Blob.Infrastructure;
 using The_Blob.Models;
 
 namespace The_Blob.Controllers
@@ -99,6 +101,13 @@ namespace The_Blob.Controllers
                 {
                     _context.Update(user);
                     await _context.SaveChangesAsync();
+                    SqlParameter param1 = new SqlParameter("@UserEmail", user.Email);
+                    User userData = _context.User.FromSqlRaw("Select * from [user] where email = @UserEmail", param1).FirstOrDefault();
+                    SqlParameter param2 = new SqlParameter("@UserID", userData.UserId);
+                    Character characterData = _context.Character.FromSqlRaw("Select * from character where userid = @UserID", param2).FirstOrDefault();
+
+                    HttpContext.Session.SetJson("User", userData);
+                    HttpContext.Session.SetJson("Character", characterData);
                 }
                 catch (DbUpdateConcurrencyException)
                 {

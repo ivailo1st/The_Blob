@@ -1,14 +1,24 @@
 ﻿@import "variables.css";
 
 .fridge-section {
-    background-color: #fdf1d8;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-    grid-template-columns: auto auto auto;
-    grid-template-rows: auto auto;
+  margin-top: 100px;
+  display: grid;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 15px;
+  height: 40%;
+  background-color: #fdf1d8;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  grid-template-columns: auto auto auto;
+  grid-template-rows: auto auto;
+  row-gap: 20px;
 }
 
 .fridge-item {
+  display: grid;
+  list-style: none;
 }
 
 .fridge-quantity {

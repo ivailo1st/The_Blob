@@ -86,6 +86,14 @@ namespace The_Blob.Controllers
 
                 Character characterData = _context.Character.FromSqlRaw("Select * from character where userid = @UserID", param2).FirstOrDefault();
 
+                SqlParameter param3 = new SqlParameter("@CharID", characterData.CharacterId);
+
+                CharacterFridge characterFridgeData = _context.CharacterFridge.FromSqlRaw("Select * from characterfridge where characterid = @CharID", param3).FirstOrDefault();
+
+                SqlParameter param4 = new SqlParameter("@FridgeID", characterFridgeData.FridgeId);
+
+                List<Fridge> fridgeData = _context.Fridge.FromSqlRaw("Select * from fridge where fridgeid = @FridgeID", param4).ToList();
+
                 //Variable used to check whether there is an already assigned variable to the session key
                 User sessionUser = HttpContext.Session.GetJson<User>("User");
                 Character sessionCharacter = HttpContext.Session.GetJson<Character>("Character");

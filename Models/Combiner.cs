@@ -11,6 +11,10 @@ namespace The_Blob.Models
         public Character character { get; set; }
         public List<Fridge> fridge { get; set; }
 
+        public Combiner()
+        {
+
+        }
         public Combiner(User User,Character Character)
         {
             user = User;

@@ -1,0 +1,30 @@
+﻿#Character {
+  max-width: 300px;
+  max-height: 300px;
+  animation: bounce 1s infinite alternate;
+  -webkit-animation: bounce 1s infinite alternate;
+  position: absolute;
+}
+
+#Container {
+  grid-area: 40 / 42 / 38 / 16;
+  min-width: 300px;
+  min-height: 300px;
+  position: relative;
+}
+
+#Shadow {
+  margin-top: 237px;
+  margin-left: 103px;
+  background: black;
+  border-radius: 50%;
+  opacity: 27%;
+  height: 50px;
+  width: 150px;
+  animation: pulse 1s infinite alternate;
+  position: absolute;
+  z-index: -2;
+}
+.st0 {
+  fill: #bcdcc4;
+}

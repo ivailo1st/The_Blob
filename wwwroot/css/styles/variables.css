@@ -1,4 +1,6 @@
-﻿$dark-green: #657b70;
+﻿@import "https://fonts.googleapis.com/css2?family=Caveat+Brush&display=swap";
+
+$dark-green: #657b70;
 $light-green: #bedfc4;
 $beige: #fdf1d8;
 $red: #fb7b76;

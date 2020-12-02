@@ -70,6 +70,10 @@ namespace The_Blob.Controllers
         // GET: Users/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
+            User sessionUser = HttpContext.Session.GetJson<User>("User");
+            Character sessionCharacter = HttpContext.Session.GetJson<Character>("Character");
+
+            Combiner combined = new Combiner(sessionUser, sessionCharacter);
             if (id == null)
             {
                 return NotFound();
@@ -80,7 +84,7 @@ namespace The_Blob.Controllers
             {
                 return NotFound();
             }
-            return View(user);
+            return View(combined);
         }
 
         // POST: Users/Edit/5
@@ -88,9 +92,9 @@ namespace The_Blob.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("UserId,Name,Email,Password")] User user)
+        public async Task<IActionResult> Edit(int id, [Bind("user,character")] Combiner combiner)
         {
-            if (id != user.UserId)
+            if (id != combiner.user.UserId)
             {
                 return NotFound();
             }
@@ -99,19 +103,28 @@ namespace The_Blob.Controllers
             {
                 try
                 {
-                    _context.Update(user);
-                    await _context.SaveChangesAsync();
-                    SqlParameter param1 = new SqlParameter("@UserEmail", user.Email);
-                    User userData = _context.User.FromSqlRaw("Select * from [user] where email = @UserEmail", param1).FirstOrDefault();
-                    SqlParameter param2 = new SqlParameter("@UserID", userData.UserId);
+                    SqlParameter param1 = new SqlParameter("@UserEmail", combiner.user.Email);
+                    SqlParameter param2 = new SqlParameter("@UserID", combiner.user.UserId);
                     Character characterData = _context.Character.FromSqlRaw("Select * from character where userid = @UserID", param2).FirstOrDefault();
 
-                    HttpContext.Session.SetJson("User", userData);
-                    HttpContext.Session.SetJson("Character", characterData);
+                    SqlParameter param3 = new SqlParameter("@UserPassword", combiner.user.Password);
+                    _context.Database.ExecuteSqlRaw("Update [user] set email = @UserEmail, password = @UserPassword where userid = @UserID ", param1,param3,param2);
+
+                    SqlParameter param4 = new SqlParameter("@CharacterID", characterData.CharacterId);
+                    SqlParameter param5 = new SqlParameter("@CharacterName", combiner.character.Name);
+                    
+                    _context.Database.ExecuteSqlRaw("Update character set name = @CharacterName where characterid = @CharacterID",param5,param4);
+                    await _context.SaveChangesAsync();
+
+                    User userSession = _context.User.FromSqlRaw("Select * from [user] where userid = @UserID", param2).FirstOrDefault();
+                    Character characterSession = _context.Character.FromSqlRaw("Select * from character where userid = @UserID", param2).FirstOrDefault();
+
+                    HttpContext.Session.SetJson("User", userSession);
+                    HttpContext.Session.SetJson("Character", characterSession);
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!UserExists(user.UserId))
+                    if (!UserExists(combiner.user.UserId))
                     {
                         return NotFound();
                     }
@@ -120,9 +133,9 @@ namespace The_Blob.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Index","Main");
             }
-            return View(user);
+            return View(combiner);
         }
 
         // GET: Users/Delete/5

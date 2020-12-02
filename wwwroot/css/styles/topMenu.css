@@ -1,0 +1,93 @@
+﻿.topMenuComponent {
+    display: grid;
+    grid-template-columns: 1fr 0.15fr 0.15fr 0.15fr 1fr;
+}
+
+.topMenuComponent--userAccount {
+    justify-self: self-end;
+}
+.topMenuComponent--userAccount a{
+    text-decoration:none;
+}
+.topMenuComponent--userAccount-circleAccount {
+    width: 43px;
+    height: 43px;
+    border-radius: 50%;
+    text-align: center;
+    background: #BEDFC4;
+    border: 2px solid #657B70;
+    box-sizing: border-box;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+#letterAccount {
+    color:#000;
+    font-size: 1.6rem;
+    margin-top:1px;
+    font-weight: 500;
+    font-family: Aguafina Script;
+}
+
+.topMenuComponent--charCurrency-coin{
+    margin-left: 1px;
+}
+
+#textCurrency {
+    position: absolute;
+    font-size: 1.6rem;
+    font-family: Aguafina Script;
+}
+
+.topMenuComponent--statBars {
+    display: flex;
+    justify-self:center;
+    flex-direction: column;
+}
+
+.topMenuComponent--statBars-bar {
+    border-radius: 1rem;
+    width: 1.75rem;
+    height: 5.87rem;
+    transform: rotate(180deg);
+    background-color: #BDC3C7;
+    margin-left: 0.38rem;
+}
+
+.topMenuComponent--statBars-bar #barColorSleeping{
+    border-radius: 1rem;
+    width:100%;
+    height:90%;
+    background-color: #ADC7FF;
+}
+.topMenuComponent--statBars-bar #barColorHunger{
+    border-radius: 1rem;
+    width:100%;
+    height:50%;
+    background-color: #F46197;
+}
+.topMenuComponent--statBars-bar #barColorFun{
+    border-radius: 1rem;
+    width:100%;
+    height:20%;
+    background-color: #4A9658;
+}
+
+.topMenuComponent--statBars-barImage {
+    margin-top:5rem;
+    position: absolute;
+}
+
+@media only screen and (max-width: 768px) {
+    .topMenuComponent {
+        grid-template-columns: 1fr 0.45fr 0.45fr 0.45fr 1fr;
+    }
+}
+
+@media only screen and (max-width: 425px) {
+    .topMenuComponent {
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    }
+
+}
+
+

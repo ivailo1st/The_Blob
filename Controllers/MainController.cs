@@ -16,7 +16,8 @@ namespace The_Blob.Controllers
             //Gets data assigned to session key and sends it to the view
             User sessionUser = HttpContext.Session.GetJson<User>("User");
             Character sessionCharacter = HttpContext.Session.GetJson<Character>("Character");
-            Combiner combined = new Combiner(sessionUser, sessionCharacter);
+            Fridge sessionFridge = HttpContext.Session.GetJson<Fridge>("Fridge");
+            Combiner combined = new Combiner(sessionUser, sessionCharacter, sessionFridge);
             return View(combined);
         }
     }

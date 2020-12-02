@@ -89,6 +89,7 @@ namespace The_Blob.Controllers
                 //Variable used to check whether there is an already assigned variable to the session key
                 User sessionUser = HttpContext.Session.GetJson<User>("User");
                 Character sessionCharacter = HttpContext.Session.GetJson<Character>("Character");
+                Fridge sessionFridge = HttpContext.Session.GetJson<Fridge>("Fridge");
 
                 if (sessionUser == null || sessionCharacter == null)
                 {

@@ -58,7 +58,7 @@ namespace The_Blob
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Welcome}/{action=Index}");
+                    pattern: "{controller=Welcome}/{action=Index}/{id?}");
             });
         }
     }

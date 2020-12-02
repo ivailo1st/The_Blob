@@ -1,0 +1,79 @@
+﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+
+a.navbar-brand {
+  white-space: normal;
+  text-align: center;
+  word-break: break-all;
+}
+
+.border-top {
+  border-top: 1px solid #e5e5e5;
+}
+.border-bottom {
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.box-shadow {
+  box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.05);
+}
+
+button.accept-policy {
+  font-size: 1rem;
+  line-height: inherit;
+}
+
+.bg-yellow {
+  background-color: $beige;
+}
+
+input[type="text"] {
+  border: none;
+  border-bottom: 2px solid #657b70;
+  background-color: transparent;
+  background: transparent;
+  border-radius: 0px;
+  width: 279px;
+}
+
+input[type="text"]:focus {
+  background-color: transparent;
+  box-shadow: none;
+  border-bottom-color: #657b70;
+}
+
+.LOGSIG-btn {
+  background-color: $light-green;
+  width: 250px;
+  height: 60px;
+  font-size: 22px;
+  border-radius: 17px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border: none;
+  margin-left: 15px;
+}
+
+.grid-item1 {
+  grid-area: 2 / 2 / 3 / 3;
+}
+
+.strongs {
+  font-family: Public Sans;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 35px;
+  color: #657b70;
+}
+
+.strongs-p {
+  font-weight: normal;
+  font-size: 22px;
+  text-align: center;
+}
+
+.strongs-b {
+  margin-left: 5px;
+  font-weight: bold;
+  font-size: 22px;
+  text-decoration-line: underline;
+}

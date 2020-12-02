@@ -58,8 +58,9 @@
   margin-left: 0.38rem;
 }
 
-.topMenuComponent--statBars-barImage {
+.menu-bar-image {
   margin-top: 5rem;
+  margin-left: -5px;
   position: absolute;
 }
 

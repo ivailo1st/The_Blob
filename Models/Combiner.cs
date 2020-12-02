@@ -9,7 +9,7 @@ namespace The_Blob.Models
     {
         public User user { get; set; }
         public Character character { get; set; }
-        public Fridge fridge { get; set; }
+        public List<Fridge> fridge { get; set; }
 
         public Combiner(User User,Character Character)
         {
@@ -17,11 +17,11 @@ namespace The_Blob.Models
             character = Character;
         }
 
-        public Combiner(User User, Character Character, Fridge Fridge)
+        public Combiner(User User, Character Character, List<Fridge> Fridges)
         {
             user = User;
             character = Character;
-            fridge = Fridge;
+            fridge = Fridges;
         }
     }
 }

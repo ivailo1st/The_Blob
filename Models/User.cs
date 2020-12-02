@@ -15,18 +15,5 @@ namespace The_Blob.Models
         public string Email { get; set; }
         [Required(ErrorMessage = "You must enter a password")]
         public string Password { get; set; }
-
-        public void CreateUser()
-        {
-
-        }
-        public void EditUser()
-        {
-
-        }
-        public void RemoveUser()
-        {
-
-        }
     }
 }

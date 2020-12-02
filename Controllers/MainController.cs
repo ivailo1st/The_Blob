@@ -37,7 +37,10 @@ namespace The_Blob.Controllers
                 Fridge item = _context.Fridge.FromSqlRaw("Select * from fridge where fridgeid = @FridgeID", param4).FirstOrDefault();
                 fridgeData.Add(item);
             }
-            Combiner combined = new Combiner(sessionUser, sessionCharacter, fridgeData);
+
+            List<Product> productData = _context.Product.FromSqlRaw("Select * from Product").ToList();
+
+            Combiner combined = new Combiner(sessionUser, sessionCharacter, fridgeData, productData);
             return View(combined);
         }
     }

@@ -1,4 +1,4 @@
-﻿@model IEnumerable<The_Blob.Models.Product>
+﻿@model The_Blob.Models.Combiner
 @{
     ViewData["Title"] = "Index";
 }
@@ -6,7 +6,7 @@
 
 <section class="store-component">
 
-    @foreach (var item in Model)
+    @foreach (var item in Model.product)
     {
         <ul class="store-item">
             <li class="store-price">

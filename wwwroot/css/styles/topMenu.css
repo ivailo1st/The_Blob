@@ -6,9 +6,11 @@
 .topMenuComponent--userAccount {
     justify-self: self-end;
 }
-.topMenuComponent--userAccount a{
-    text-decoration:none;
-}
+
+    .topMenuComponent--userAccount a {
+        text-decoration: none;
+    }
+
 .topMenuComponent--userAccount-circleAccount {
     width: 43px;
     height: 43px;
@@ -21,14 +23,14 @@
 }
 
 #letterAccount {
-    color:#000;
+    color: #000;
     font-size: 1.6rem;
-    margin-top:1px;
+    margin-top: 1px;
     font-weight: 500;
     font-family: Aguafina Script;
 }
 
-.topMenuComponent--charCurrency-coin{
+.topMenuComponent--charCurrency-coin {
     margin-left: 1px;
 }
 
@@ -40,12 +42,12 @@
 
 .topMenuComponent--statBars {
     display: flex;
-    justify-self:center;
+    justify-self: center;
     flex-direction: column;
 }
 
 .topMenuComponent--statBars-bar {
-    border-radius: 1rem;
+    border-radius: 0.5rem;
     width: 1.75rem;
     height: 5.87rem;
     transform: rotate(180deg);
@@ -53,27 +55,29 @@
     margin-left: 0.38rem;
 }
 
-.topMenuComponent--statBars-bar #barColorSleeping{
-    border-radius: 1rem;
-    width:100%;
-    height:90%;
-    background-color: #ADC7FF;
-}
-.topMenuComponent--statBars-bar #barColorHunger{
-    border-radius: 1rem;
-    width:100%;
-    height:50%;
-    background-color: #F46197;
-}
-.topMenuComponent--statBars-bar #barColorFun{
-    border-radius: 1rem;
-    width:100%;
-    height:20%;
-    background-color: #4A9658;
-}
+    .topMenuComponent--statBars-bar #barColorSleeping {
+        border-radius: 0.5rem;
+        width: 100%;
+        height: 90%;
+        background-color: #ADC7FF;
+    }
+
+    .topMenuComponent--statBars-bar #barColorHunger {
+        border-radius: 0.5rem;
+        width: 100%;
+        height: 50%;
+        background-color: #F46197;
+    }
+
+    .topMenuComponent--statBars-bar #barColorFun {
+        border-radius: 0.5rem;
+        width: 100%;
+        height: 20%;
+        background-color: #4A9658;
+    }
 
 .topMenuComponent--statBars-barImage {
-    margin-top:5rem;
+    margin-top: 5rem;
     position: absolute;
 }
 
@@ -87,7 +91,4 @@
     .topMenuComponent {
         grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     }
-
 }
-
-

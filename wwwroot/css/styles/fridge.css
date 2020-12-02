@@ -1,6 +1,4 @@
-﻿@import "variables.css";
-
-.fridge-section {
+﻿.fridge-section {
   margin-top: 100px;
   display: grid;
   position: absolute;
@@ -8,12 +6,13 @@
   width: 100%;
   padding: 15px;
   height: 40%;
-  background-color: #fdf1d8;
+  background-color: var(--beige);
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
   grid-template-columns: auto auto auto;
   grid-template-rows: auto auto;
   row-gap: 20px;
+  font-family: var(--body-font);
 }
 
 .fridge-item {

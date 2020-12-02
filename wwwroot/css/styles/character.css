@@ -1,6 +1,4 @@
-﻿@import "variables.css";
-
-.character-element {
+﻿.character-element {
   max-width: auto;
   max-height: 300px;
   animation: bounce 1s infinite alternate;

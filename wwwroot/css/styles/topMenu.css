@@ -1,9 +1,8 @@
-﻿@import "variables.css";
-
-.topMenuComponent {
+﻿.topMenuComponent {
   display: grid;
   padding: 15px;
   grid-template-columns: 1fr 0.15fr 0.15fr 0.15fr 1fr;
+  font-weight: var(--body-font);
 }
 
 .topMenuComponent--userAccount {
@@ -19,8 +18,8 @@
   height: 43px;
   border-radius: 50%;
   text-align: center;
-  background: #bedfc4;
-  border: 2px solid #657b70;
+  background: var(--light-green);
+  border: 2px solid var(--dark-green);
   box-sizing: border-box;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
@@ -54,7 +53,7 @@
   width: 1.75rem;
   height: 5.87rem;
   transform: rotate(180deg);
-  background-color: #bdc3c7;
+  background-color: var(--bar-bck);
   margin-left: 0.38rem;
 }
 

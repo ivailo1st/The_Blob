@@ -16,7 +16,7 @@
 .shadow-element {
   margin-top: 237px;
   margin-left: 42%;
-  background: black;
+  background: var(--back);
   border-radius: 50%;
   opacity: 27%;
   height: 50px;
@@ -26,5 +26,5 @@
   z-index: -2;
 }
 .st0 {
-  fill: #bcdcc4;
+  fill: var(--light-green);
 }

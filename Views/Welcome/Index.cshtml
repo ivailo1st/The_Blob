@@ -4,35 +4,36 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<body class="bg-yellow">
-    <div class="row justify-content-center">
-        <div class="col-5 col-md-3 justify-content-center">
-            <h1 class="strongs">The Blob</h1>
-            <br />
-            <strong class="strongs">Welcome</strong>
-            <br />
-            <form asp-action="Login">
-                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                <div class="form-group">
-                    <label asp-for="Email" class="control-label"></label>
-                    <input asp-for="Email" class="form-control" />
-                    <span asp-validation-for="Email" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="Password" class="control-label"></label>
-                    <input asp-for="Password" class="form-control" />
-                    <span asp-validation-for="Password" class="text-danger"></span>
-                </div>
 
-                <div class="form-group">
-                    <input type="submit" value="Login" class="LOGSIG-btn strongs strongs-p" />
-                </div>
+<div class="login-element">
 
-            </form>
+    <h1 class="strongs">The Blob</h1>
+    <br />
+    <strong class="strongs">Welcome</strong>
+    <br />
+    <form asp-action="Login">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+            <label asp-for="Email" class="control-label"></label>
+            <input asp-for="Email" class="form-control" />
+            <span asp-validation-for="Email" class="text-danger"></span>
         </div>
-    </div>
+        <div class="form-group">
+            <label asp-for="Password" class="control-label"></label>
+            <input asp-for="Password" class="form-control" />
+            <span asp-validation-for="Password" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <input type="submit" value="Login" class="LOGSIG-btn strongs strongs-p" />
+        </div>
+
+    </form>
+    <br />
     <p class="strongs strongs-p">New User? <a asp-controller="Welcome" asp-action="Singup" class="strongs strongs-b">Sign Up</a> </p>
-</body>
+</div>
+       
+
 
 
 @section Scripts {

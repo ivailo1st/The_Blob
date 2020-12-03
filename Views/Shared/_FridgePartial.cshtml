@@ -3,21 +3,24 @@
 
 
 
-<section class="fridge-section">
+<div class="fridge-element">
+    <h3 class="fridge-name" >Fridge</h3>
+    <section class="fridge-section">
 
-    @foreach (var item in Model.fridge)
-    {
-        <ul class="fridge-item">
-            <li class="fridge-quantity">
-                @item.Quantity x
-            </li>
-            <li class="fridge-image">
-                <img class="fridge-image" src="@item.ImageURL" alt="Alternate Text" />
-            </li>
-            <li class="fridge-percentage">
-                @item.HungerPercentage %
-            </li>
-        </ul>
-    }
+        @foreach (var item in Model.fridge)
+        {
+            <ul class="fridge-item">
+                <li class="fridge-quantity">
+                    @item.Quantity x
+                </li>
+                <li>
+                    <img class="fridge-image" src="@item.ImageURL" alt="Alternate Text" />
+                </li>
+                <li class="fridge-percentage">
+                    @item.HungerPercentage %
+                </li>
+            </ul>
+        }
 
-</section>
+    </section>
+    </div>

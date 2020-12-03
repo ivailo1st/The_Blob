@@ -11,7 +11,7 @@
 
 @{await Html.RenderPartialAsync("_TopMenuPartial");}
 
-<p>Current session id: @Model.user.UserId; email: @Model.user.Email; password: @Model.user.Password;</p>
+@*<p>Current session id: @Model.user.UserId; email: @Model.user.Email; password: @Model.user.Password;</p>*@
 
 <div class="character-container">
     <svg class="character-element" id="js-character" x="0px" y="0px"
@@ -25,10 +25,12 @@
  </svg>
     <div class="shadow-element" id="js-shadow"></div>
 </div>
+<div class="character-floor">
 
-@{await Html.RenderPartialAsync("_FridgePartial");}
+</div>
+@*@{await Html.RenderPartialAsync("_FridgePartial");}
 
-@{ await Html.RenderPartialAsync("_StorePartial");}
+@{ await Html.RenderPartialAsync("_StorePartial");}*@
 
 
 

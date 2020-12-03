@@ -3,22 +3,24 @@
     ViewData["Title"] = "Index";
 }
 
+<div class="store-element">
+    <h3 class="store-name">Store</h3>
+    <section class="store-component">
 
-<section class="store-component">
+        @foreach (var item in Model.product)
+        {
+            <ul class="store-item">
+                <li class="store-price">
+                    @item.ProductPrice
+                </li>
+                <li>
+                    <img class="store-image" src="@item.ImageURL" alt="Alternate Text" />
+                </li>
+                <li class="store-percentage">
+                    @item.ProductPercentage
+                </li>
+            </ul>
+        }
 
-    @foreach (var item in Model.product)
-    {
-        <ul class="store-item">
-            <li class="store-price">
-                @Html.DisplayFor(modelItem => item.ProductPrice)
-            </li>
-            <li class="store-image">
-                <img src="@item.ImageURL" alt="Alternate Text" />
-            </li>
-            <li class="store-percentage">
-                @Html.DisplayFor(modelItem => item.ProductPercentage)
-            </li>
-        </ul>
-    }
-
-</section>
+    </section>
+    </div>

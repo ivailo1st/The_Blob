@@ -1,5 +1,5 @@
 ﻿
-var Character = document.getElementById('js-character');
+let Character = document.getElementById('js-character');
 Character.animate(
   [
     { transform: 'translateY(opx)' },
@@ -13,7 +13,7 @@ Character.animate(
 
 );
 
-var Shadow = document.getElementById('js-shadow');
+let Shadow = document.getElementById('js-shadow');
 Shadow.animate(
   [
     { transform: 'scale(1)' },

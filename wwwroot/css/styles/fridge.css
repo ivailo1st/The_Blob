@@ -1,4 +1,9 @@
-﻿.fridge-section {
+﻿.fridge-name {
+  text-align: center;
+  font-family: var(--body-font);
+}
+
+.fridge-section {
   margin-top: 100px;
   display: grid;
   position: absolute;
@@ -6,7 +11,7 @@
   width: 100%;
   padding: 15px;
   height: 40%;
-  background-color: var(--beige);
+  background-color: var(--beige-transparent);
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
   grid-template-columns: auto auto auto;
@@ -16,17 +21,20 @@
 }
 
 .fridge-item {
-  display: grid;
   list-style: none;
 }
 
 .fridge-quantity {
+  position: absolute;
+  padding-left: 60px;
 }
 
 .fridge-image {
-  max-height: 30px;
+  height: 70px;
   width: auto;
+  padding: 5px 0 10px 0;
 }
 
 .fridge-percentage {
+  padding-left: 10px;
 }

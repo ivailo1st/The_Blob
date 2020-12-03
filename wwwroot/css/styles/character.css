@@ -1,30 +1,42 @@
-﻿.character-element {
-  max-width: auto;
-  max-height: 300px;
-  animation: bounce 1s infinite alternate;
-  -webkit-animation: bounce 1s infinite alternate;
-  position: absolute;
-}
-
-.character-container {
-  grid-area: 40 / 42 / 38 / 16;
+﻿.character-container {
   min-width: 300px;
   min-height: 300px;
   position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.character-element {
+  padding-top: 50px;
+  max-width: auto;
+  margin-left: auto;
+  margin-right: auto;
+  max-height: 500px;
+  position: absolute;
 }
 
 .shadow-element {
-  margin-top: 237px;
-  margin-left: 42%;
-  background: var(--back);
+  background: var(--black);
   border-radius: 50%;
+  margin-top: 430px;
   opacity: 27%;
-  height: 50px;
-  width: 150px;
-  animation: pulse 1s infinite alternate;
-  position: absolute;
+  height: 70px;
+  width: 270px;
+  margin-left: 30%;
   z-index: -2;
 }
+
 .st0 {
   fill: var(--light-green);
+}
+
+.character-floor {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 15px;
+  height: 40%;
+  background-color: var(--dark-green);
+  z-index: -5;
 }

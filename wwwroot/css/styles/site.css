@@ -1,16 +1,14 @@
-﻿@import "variables.css";
-
-a.navbar-brand {
+﻿a.navbar-brand {
   white-space: normal;
   text-align: center;
   word-break: break-all;
 }
 
 .border-top {
-  border-top: 1px solid #e5e5e5;
+  border-top: 1px solid var(--bar-bck);
 }
 .border-bottom {
-  border-bottom: 1px solid #e5e5e5;
+  border-bottom: 1px solid var(--bar-bck);
 }
 
 .box-shadow {
@@ -22,13 +20,9 @@ button.accept-policy {
   line-height: inherit;
 }
 
-.bg-yellow {
-    background-color: #fdf1d8;
-}
-
 input[type="text"] {
   border: none;
-  border-bottom: 2px solid #657b70;
+  border-bottom: 2px solid var(--dark-green);
   background-color: transparent;
   background: transparent;
   border-radius: 0px;
@@ -38,18 +32,18 @@ input[type="text"] {
 input[type="text"]:focus {
   background-color: transparent;
   box-shadow: none;
-  border-bottom-color: #657b70;
+  border-bottom-color: var(--dark-green);
 }
 
 .LOGSIG-btn {
-    background-color: #bedfc4;
-    width: 250px;
-    height: 60px;
-    font-size: 22px;
-    border-radius: 17px;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    border: none;
-    margin-left: 15px;
+  background-color: var(--light-green);
+  width: 250px;
+  height: 60px;
+  font-size: 22px;
+  border-radius: 17px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border: none;
+  margin-left: 15px;
 }
 
 .grid-item1 {
@@ -61,7 +55,7 @@ input[type="text"]:focus {
   font-style: normal;
   font-weight: bold;
   font-size: 35px;
-  color: #657b70;
+  color: var(--dark-green);
 }
 
 .strongs-p {

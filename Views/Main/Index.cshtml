@@ -23,15 +23,19 @@
 
 
 
+
+
+
+
  </svg>
     <div class="shadow-element" id="js-shadow"></div>
 </div>
 <div class="character-floor">
-
+    @{ await Html.RenderPartialAsync("_BotMenuPartial");}
 </div>
 @*@{await Html.RenderPartialAsync("_FridgePartial");}
 
-@{ await Html.RenderPartialAsync("_StorePartial");}*@
+    @{ await Html.RenderPartialAsync("_StorePartial");}*@
 
 
 

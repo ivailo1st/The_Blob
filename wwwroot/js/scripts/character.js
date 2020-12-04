@@ -27,6 +27,12 @@ Shadow.animate(
 
 );
 
+var angry = "~/pics/faces/angry.svg";
+var happy = "~/pics/faces/happy.svg";
+var average = "~/pics/faces/average.svg";
+var sleeping = "~/pics/faces/sleeping.svg";
+var sad = "~/pics/faces/sad.svg";
+
 console.log('hello');
 
 

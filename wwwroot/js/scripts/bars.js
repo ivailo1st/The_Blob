@@ -2,8 +2,15 @@ let domainUrl = window.location.hostname;
 console.log(domainUrl);
 
 
-fetch("api/CharacterAPI")
+fetch("api/CharacterAPI/3")
   .then(response => response.json())
+  .then(data => console.log(data));
+
+fetch("api/CharacterAPI/3", {
+  method: 'PUT'
+})
+  .then(response => response.json())
+  .then(data => console.log(data));
 
 
 
@@ -18,7 +25,7 @@ let currentDate = new Date();
 let newDate = currentDate.getTime();
 console.log(newDate);
 
-let change = newDate - setDate;
+let change = newDate - setDate; L
 console.log(change);
 
 let day, hour, minute, seconds;

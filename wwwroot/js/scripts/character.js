@@ -1,4 +1,18 @@
 ﻿
+let Face = document.getElementById('js-face');
+Face.animate(
+  [
+    { transform: 'translateY(opx)' },
+    { transform: 'translateY(-15px)' }
+  ],
+  {
+    duration: 2500,
+    iterations: Infinity,
+    direction: 'alternate'
+  }
+
+);
+
 let Character = document.getElementById('js-character');
 Character.animate(
   [
@@ -27,7 +41,6 @@ Shadow.animate(
 
 );
 
-console.log('hello');
 
 
 

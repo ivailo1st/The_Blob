@@ -16,6 +16,7 @@ namespace The_Blob.Models {
         public bool Awake { get; set; } = true;
         public int Fun { get; set; } = 100;
         public int Currency { get; set; } = 500;
+        public DateTime LogDate { get; set; }
 
         public int UserId { get; set; }
         public virtual User user { get; set; }

@@ -29,6 +29,19 @@ input[type="text"] {
   width: 279px;
 }
 
+input[type="password"] {
+    border: none;
+    border-bottom: 2px solid var(--dark-green);
+    background-color: transparent;
+    background: transparent;
+    border-radius: 0px;
+    width: 279px;
+}
+input[type="password"]:focus {
+    background-color: transparent;
+    box-shadow: none;
+    border-bottom-color: var(--dark-green);
+}
 input[type="text"]:focus {
   background-color: transparent;
   box-shadow: none;

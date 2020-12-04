@@ -12,6 +12,20 @@ Character.animate(
   }
 
 );
+let Face = document.getElementById('js-face');
+Face.animate(
+    [
+        { transform: 'translateY(opx)' },
+        { transform: 'translateY(-15px)' }
+    ],
+    {
+        duration: 2500,
+        iterations: Infinity,
+        direction: 'alternate'
+    }
+
+);
+
 
 let Shadow = document.getElementById('js-shadow');
 Shadow.animate(
@@ -32,6 +46,9 @@ var happy = "~/pics/faces/happy.svg";
 var average = "~/pics/faces/average.svg";
 var sleeping = "~/pics/faces/sleeping.svg";
 var sad = "~/pics/faces/sad.svg";
+
+
+
 
 console.log('hello');
 

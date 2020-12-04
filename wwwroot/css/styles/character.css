@@ -40,3 +40,10 @@
   background-color: var(--dark-green);
   z-index: -5;
 }
+
+.faces {
+    width:175px;
+    z-index: 5;
+    margin-top:120px;
+
+}

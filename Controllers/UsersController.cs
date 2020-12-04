@@ -137,6 +137,14 @@ namespace The_Blob.Controllers
             }
             return View(combiner);
         }
+        public async Task<IActionResult> DeleteConfirmed(int id)
+        {
+            var user = await _context.User.FindAsync(id);
+            _context.User.Remove(user);
+            await _context.SaveChangesAsync();
+            HttpContext.Session.Logout();
+            return RedirectToAction("Index", "Welcome");
+        }
 
         // GET: Users/Delete/5
         public async Task<IActionResult> Delete(int? id)
@@ -159,13 +167,7 @@ namespace The_Blob.Controllers
         // POST: Users/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            var user = await _context.User.FindAsync(id);
-            _context.User.Remove(user);
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
-        }
+
 
         private bool UserExists(int id)
         {

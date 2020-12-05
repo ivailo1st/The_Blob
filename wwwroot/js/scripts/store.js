@@ -1,5 +1,5 @@
 ﻿
-function addItem(itemName, itemPercent, itemURL, itemPrice,charID) {
+function addItem(itemName, itemPercent, itemURL, itemPrice, charID) {
     let addQuery = {
         foodName: itemName,
         hungerPercentage: itemPercent,
@@ -62,18 +62,21 @@ function addItem(itemName, itemPercent, itemURL, itemPrice,charID) {
                     }).catch(err => console.log(err));
             }
         });
-    
-    //let userCurrency = document.getElementById("textCurrency").innerHTML;
-    //let deductQuery = {
-    //    currency: userCurrency - itemPrice
-    //}
-    //console.log(JSON.stringify(deductQuery));
-    //fetch("api/characterapi/" + charID, {
-    //    method: "PUT",
-    //    headers: { "Content-Type": "application/json", "Accept": "application/json" },
-    //    body: JSON.stringify(deductQuery)
+    let userCurrency = document.getElementById("textCurrency").innerHTML;
+    let newCurrency = userCurrency - itemPrice;
+    console.log(newCurrency);
+    if (newCurrency > 0) {
+        //Fetch for Updating Character Currency
+        fetch("api/characterapi/" + newCurrency, {
+            method: "PATCH",
+            headers: { "content-type": "application/json", "accept": "application/json" }
 
-    //})
-    //    .then(response => response.json())
-    //    .then(json => console.log(json)).catch(err => console.log(err));
+        })
+            .then(response => response.json())
+            .then(json => console.log(json)).catch(err => console.log(err));
+        document.getElementById("textCurrency").innerHTML = newCurrency;
+    }
+    else {
+        alert("Not Enough Money");
+    }
 }

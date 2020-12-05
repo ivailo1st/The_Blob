@@ -4,8 +4,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using The_Blob.Data;
+using The_Blob.Infrastructure;
 using The_Blob.Models;
 
 namespace The_Blob.Controllers
@@ -62,6 +64,37 @@ namespace The_Blob.Controllers
             catch (DbUpdateConcurrencyException)
             {
                 if (!CharacterExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return NoContent();
+        }
+
+        [HttpPatch("{currency}")]
+        public async Task<IActionResult> PatchCharacter(int currency)
+        {
+            Character sessionCharacter = HttpContext.Session.GetJson<Character>("Character");
+            SqlParameter param1 = new SqlParameter("@CharID",sessionCharacter.CharacterId);
+            SqlParameter param2 = new SqlParameter("@CharCurrency", currency);
+
+            _context.Database.ExecuteSqlRaw("Update character set currency = @CharCurrency where characterid = @CharID ",param2,param1);
+
+            try
+            {
+                await _context.SaveChangesAsync();
+
+                Character characterData = _context.Character.FromSqlRaw("Select * from character where characterid = @CharID", param1).FirstOrDefault();
+                HttpContext.Session.SetJson("Character", characterData);
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!CharacterExists(sessionCharacter.CharacterId))
                 {
                     return NotFound();
                 }

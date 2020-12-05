@@ -12,9 +12,12 @@ namespace The_Blob.Models
         public int HungerPercentage { get; set; }
         public int Quantity { get; set; }
         public string ImageURL { get; set; }
-        public void IncreaseHunger()
+        public Fridge(string foodName, int hungerPercentage, int quantity, string imageURL)
         {
-
+            FoodName = foodName;
+            HungerPercentage = hungerPercentage;
+            Quantity = quantity;
+            ImageURL = imageURL;
         }
     }
 }

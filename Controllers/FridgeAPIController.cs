@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using The_Blob.Data;
 using The_Blob.Models;
@@ -29,10 +30,11 @@ namespace The_Blob.Controllers
         }
 
         // GET: api/FridgeAPI/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Fridge>> GetFridge(int id)
+        [HttpGet("{foodName}")]
+        public ActionResult<Fridge> GetFridge(string foodName)
         {
-            var fridge = await _context.Fridge.FindAsync(id);
+            SqlParameter param1 = new SqlParameter("@FoodName", foodName);
+            Fridge fridge = _context.Fridge.FromSqlRaw("Select * from fridge where foodname = @FoodName", param1).FirstOrDefault();
 
             if (fridge == null)
             {
@@ -45,13 +47,13 @@ namespace The_Blob.Controllers
         // PUT: api/FridgeAPI/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutFridge(int id, Fridge fridge)
+        [HttpPut]
+        public async Task<IActionResult> PutFridge(Fridge fridge)
         {
-            if (id != fridge.FridgeId)
-            {
-                return BadRequest();
-            }
+            SqlParameter param1 = new SqlParameter("@FoodName", fridge.FoodName);
+            Fridge fridgeData = _context.Fridge.FromSqlRaw("Select * from fridge where foodname = @FoodName",param1).FirstOrDefault();
+            SqlParameter param2 = new SqlParameter("@Quantity", (fridgeData.Quantity+1));
+            _context.Database.ExecuteSqlRaw("Update fridge set quantity=@Quantity where foodname = @FoodName", param2,param1);
 
             _context.Entry(fridge).State = EntityState.Modified;
 
@@ -61,7 +63,7 @@ namespace The_Blob.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!FridgeExists(id))
+                if (!FridgeExists(fridge.FridgeId))
                 {
                     return NotFound();
                 }
@@ -83,7 +85,7 @@ namespace The_Blob.Controllers
             _context.Fridge.Add(fridge);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetFridge", new { id = fridge.FridgeId }, fridge);
+            return fridge;
         }
 
         // DELETE: api/FridgeAPI/5

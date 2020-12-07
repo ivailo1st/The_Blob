@@ -75,7 +75,39 @@ namespace The_Blob.Controllers
 
             return NoContent();
         }
-     
+
+        [HttpPatch("Bars/{awake}")]
+        public async Task<IActionResult> CharacterAwake(bool awake)
+        {
+            Character sessionCharacter = HttpContext.Session.GetJson<Character>("Character");
+
+            SqlParameter param1 = new SqlParameter("@CharID", sessionCharacter.CharacterId);
+            SqlParameter param2 = new SqlParameter("@Awake", awake);
+
+            _context.Database.ExecuteSqlRaw("Update character set awake = @Awake where characterid = @CharID ", param2, param1);
+
+            try
+            {
+                await _context.SaveChangesAsync();
+
+                Character characterData = _context.Character.FromSqlRaw("Select * from character where characterid = @CharID", param1).FirstOrDefault();
+                HttpContext.Session.SetJson("Character", characterData);
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!CharacterExists(sessionCharacter.CharacterId))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return NoContent();
+        }
+
         [HttpPatch("{currency}")]
         public async Task<IActionResult> PatchCurrency(int currency)
         {

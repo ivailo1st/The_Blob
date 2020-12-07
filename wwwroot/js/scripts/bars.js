@@ -2,8 +2,20 @@ let hungerBar = document.getElementsByClassName('hunger-svg');
 let sleepBar = document.getElementsByClassName('sleep-svg');
 let funBar = document.getElementsByClassName('hunger-svg');
 
-setInterval(updateTime, 2000)
+setInterval(updateTime, 2000);
 let CharacterId = document.getElementById('js-char-value').innerHTML;
+
+function goToSleep() {
+    fetch("api/CharacterAPI/" + CharacterId)
+        .then(response => response.json())
+        .then(data => {
+            let newAwake = !data.awake;
+            fetch("api/CharacterAPI/Bars/" + newAwake, {
+                method: "PATCH",
+                headers: { "Content-Type": "application/json", "Accept": "application/json" },
+            });
+        });
+}
 
 function updateTime() {
   // fetch all the data about character

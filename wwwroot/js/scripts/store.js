@@ -1,4 +1,8 @@
-﻿
+﻿function openStore() {
+  document.getElementById('js-fridge-element').style.display = "none";
+  document.getElementById('js-store-element').style.display = "block";
+};
+
 function addItem(itemName, itemPercent, itemURL, itemPrice, charID) {
   //Fridge Item Logic
   let addQuery = {

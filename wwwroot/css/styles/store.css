@@ -1,4 +1,8 @@
-﻿.store-name {
+﻿#js-store-element {
+  display: none;
+}
+
+.store-name {
   text-align: center;
   font-family: var(--body-font);
 }
@@ -21,8 +25,8 @@
 }
 
 .store-button {
-    background: transparent;
-    border: none;
+  background: transparent;
+  border: none;
 }
 .store-item {
   list-style: none;

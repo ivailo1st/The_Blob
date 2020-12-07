@@ -51,9 +51,9 @@ namespace The_Blob.Controllers
         public async Task<IActionResult> PutFridge(Fridge fridge)
         {
             SqlParameter param1 = new SqlParameter("@FoodName", fridge.FoodName);
-            Fridge fridgeData = _context.Fridge.FromSqlRaw("Select * from fridge where foodname = @FoodName",param1).FirstOrDefault();
-            SqlParameter param2 = new SqlParameter("@Quantity", (fridgeData.Quantity+1));
-            _context.Database.ExecuteSqlRaw("Update fridge set quantity=@Quantity where foodname = @FoodName", param2,param1);
+            Fridge fridgeData = _context.Fridge.FromSqlRaw("Select * from fridge where foodname = @FoodName", param1).FirstOrDefault();
+            SqlParameter param2 = new SqlParameter("@Quantity", (fridgeData.Quantity + 1));
+            _context.Database.ExecuteSqlRaw("Update fridge set quantity=@Quantity where foodname = @FoodName", param2, param1);
 
             _context.Entry(fridge).State = EntityState.Modified;
 
@@ -75,15 +75,13 @@ namespace The_Blob.Controllers
 
             return NoContent();
         }
-        [HttpPatch]
-        public async Task<IActionResult> PatchFridge(Fridge fridge)
+        [HttpPatch("{fridgeId}")]
+        public async Task<IActionResult> PatchFridge(int fridgeId)
         {
-            SqlParameter param1 = new SqlParameter("@FoodName", fridge.FoodName);
-            Fridge fridgeData = _context.Fridge.FromSqlRaw("Select * from fridge where foodname = @FoodName", param1).FirstOrDefault();
+            SqlParameter param1 = new SqlParameter("@FridgeId", fridgeId);
+            Fridge fridgeData = _context.Fridge.FromSqlRaw("Select * from fridge where fridgeId = @FridgeId", param1).FirstOrDefault();
             SqlParameter param2 = new SqlParameter("@Quantity", (fridgeData.Quantity - 1));
-            _context.Database.ExecuteSqlRaw("Update fridge set quantity=@Quantity where foodname = @FoodName", param2, param1);
-
-            _context.Entry(fridge).State = EntityState.Modified;
+            _context.Database.ExecuteSqlRaw("Update fridge set quantity=@Quantity where fridgeId = @FridgeId", param2, param1);
 
             try
             {
@@ -91,7 +89,7 @@ namespace The_Blob.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!FridgeExists(fridge.FridgeId))
+                if (!FridgeExists(fridgeId))
                 {
                     return NotFound();
                 }

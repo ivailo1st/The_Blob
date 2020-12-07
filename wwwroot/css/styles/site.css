@@ -70,8 +70,36 @@ input[type="text"]:focus {
     border: none;
     margin-left: 15px;
     color:black;
+    display:block;
 }
 
+.close-btn {
+    max-width:45px;
+    max-height:45px;
+    margin-left:232px;
+}
+
+@font-face {
+    font-family: 'MONAFONT';
+    src: URL('../../MONAFONT.TTF') format('truetype');
+}
+.logo {
+    font-family: MONAFONT;
+    color: var(--dark-green);
+    font-size: 85px;
+
+}
+.logo-welcome {
+    font-size: 35px;
+    color:var(--dark-green);
+}
+
+.move-item {
+    margin-left:1px;
+}
+.move-item-dlt {
+    margin-top:35px;
+}
 .grid-item1 {
   grid-area: 2 / 2 / 3 / 3;
 }

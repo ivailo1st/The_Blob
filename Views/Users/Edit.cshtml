@@ -1,6 +1,7 @@
 ﻿@model The_Blob.Models.Combiner
 
 @{
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <!DOCTYPE html>
@@ -8,43 +9,46 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>Edit</title>
+    <title>Account</title>
 </head>
 <body>
+    <div class="login-element">
+        <h4>Account</h4>
+        
+        <hr />
+            <div>
+               <a asp-controller="main" asp-action="Index"><img src="~/pics/icon/close.svg" class="close-btn" /></a>
+            </div>
+            <br />
+                  <form asp-action="Edit">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="user.UserId" />
+                    <div class="form-group">
+                        <label asp-for="user.Email" class="control-label"></label>
+                        <input asp-for="user.Email" class="form-control" />
+                        <span asp-validation-for="user.Email" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="user.Password" class="control-label"></label>
+                        <input asp-for="user.Password" class="form-control" />
+                        <span asp-validation-for="user.Password" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="character.Name" class="control-label"></label>
+                        <input asp-for="character.Name" class="form-control" />
+                        <span asp-validation-for="character.Name" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Save" class="LOGSIG-btn" />
+                    </div>
+                </form>
+                <a asp-action="Logout" asp-controller="welcome"><button class="LOGSIG-btn move-item">Log out</button></a>
+                <a asp-controller="Users" asp-action="DeleteConfirmed" asp-route-id="@Model.user.UserId"><button type="button" class="terminate move-item move-item-dlt"> Delete</button></a>
+           
+        
 
-<h4>User</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Edit">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="user.UserId" />
-            <div class="form-group">
-                <label asp-for="user.Email" class="control-label"></label>
-                <input asp-for="user.Email" class="form-control" />
-                <span asp-validation-for="user.Email" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="user.Password" class="control-label"></label>
-                <input asp-for="user.Password" class="form-control" />
-                <span asp-validation-for="user.Password" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="character.Name" class="control-label"></label>
-                <input asp-for="character.Name" class="form-control" />
-                <span asp-validation-for="character.Name" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="LOGSIG-btn" />
-            </div>
-        </form>
-        <a asp-controller="Users" asp-action="DeleteConfirmed" asp-route-id="@Model.user.UserId" class="terminate">Exterminate</a>
+
+    
     </div>
-</div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
-
 </body>
 </html>

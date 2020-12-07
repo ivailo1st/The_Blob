@@ -14,7 +14,7 @@
                     @item.Quantity x
                 </li>
                 <li>
-                    <img class="fridge-image" src="@item.ImageURL" alt="Alternate Text" />
+                    <img id="drag1" draggable="true" ondragstart="drag(event)" class="fridge-image" src="@item.ImageURL" alt="Alternate Text" />
                 </li>
                 <li class="fridge-percentage">
                     @item.HungerPercentage %

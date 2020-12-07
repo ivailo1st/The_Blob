@@ -35,10 +35,10 @@
                 <span asp-validation-for="character.Name" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <input type="submit" value="Save" class="LOGSIG-btn" />
             </div>
         </form>
-        <a asp-controller="Users" asp-action="DeleteConfirmed" asp-route-id="@Model.user.UserId">Exterminate</a>
+        <a asp-controller="Users" asp-action="DeleteConfirmed" asp-route-id="@Model.user.UserId" class="terminate">Exterminate</a>
     </div>
 </div>
 

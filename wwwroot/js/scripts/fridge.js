@@ -3,8 +3,6 @@ function openFridge() {
   document.getElementById('js-store-element').style.display = "none";
 }
 
-
-
 // function allowDrop(ev) {
 //   ev.preventDefault();
 // }
@@ -25,7 +23,7 @@ function updateItem(FridgeId) {
     .then(data => {
       console.log(data)
       if (data.quantity > 1) {
-
+        console.log(data.quantity)
         fetch("api/fridgeapi" + FridgeId, {
           method: "PATCH",
           headers: { "Content-Type": "application/json", "Accept": "application/json" }
@@ -34,6 +32,7 @@ function updateItem(FridgeId) {
           .then(json => console.log(json)).catch(err => console.log(err));
       }
       else if (data.quantity = 1) {
+        console.log('nope')
         fetch("api/fridgeapi/" + FridgeId, {
           method: "DELETE",
           headers: { "Content-Type": "application/json", "Accept": "application/json" }

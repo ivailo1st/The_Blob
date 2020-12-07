@@ -1,5 +1,6 @@
 ﻿.fridge-name {
   text-align: center;
+  margin-top: -50px;
   font-family: var(--body-font);
 }
 
@@ -38,6 +39,7 @@
   height: 70px;
   width: auto;
   padding: 5px 0 10px 0;
+  cursor: pointer;
 }
 
 .fridge-percentage {
@@ -45,4 +47,5 @@
 }
 
 .grocery-btn {
+  text-align: center;
 }

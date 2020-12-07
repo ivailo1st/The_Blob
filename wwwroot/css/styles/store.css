@@ -4,6 +4,7 @@
 
 .store-name {
   text-align: center;
+  margin-top: -50px;
   font-family: var(--body-font);
 }
 
@@ -15,6 +16,7 @@
   width: 100%;
   padding: 15px;
   height: 40%;
+  z-index: -1;
   background-color: var(--beige-transparent);
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
@@ -39,6 +41,7 @@
 
 .store-image {
   height: 70px;
+  cursor: pointer;
   width: auto;
   padding: 5px 0 10px 0;
 }

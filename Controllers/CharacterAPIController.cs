@@ -75,15 +75,51 @@ namespace The_Blob.Controllers
 
             return NoContent();
         }
-
+     
         [HttpPatch("{currency}")]
-        public async Task<IActionResult> PatchCharacter(int currency)
+        public async Task<IActionResult> PatchCurrency(int currency)
         {
             Character sessionCharacter = HttpContext.Session.GetJson<Character>("Character");
             SqlParameter param1 = new SqlParameter("@CharID",sessionCharacter.CharacterId);
             SqlParameter param2 = new SqlParameter("@CharCurrency", currency);
 
             _context.Database.ExecuteSqlRaw("Update character set currency = @CharCurrency where characterid = @CharID ",param2,param1);
+
+            try
+            {
+                await _context.SaveChangesAsync();
+
+                Character characterData = _context.Character.FromSqlRaw("Select * from character where characterid = @CharID", param1).FirstOrDefault();
+                HttpContext.Session.SetJson("Character", characterData);
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!CharacterExists(sessionCharacter.CharacterId))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return NoContent();
+        }
+
+
+        [HttpPatch]
+        public async Task<IActionResult> PatchCharacter(long[] Bars)
+        {
+            Character sessionCharacter = HttpContext.Session.GetJson<Character>("Character");
+            
+            SqlParameter param1 = new SqlParameter("@CharID", sessionCharacter.CharacterId);
+            SqlParameter param2 = new SqlParameter("@Hunger", Bars[0]);
+            SqlParameter param3 = new SqlParameter("@Sleep", Bars[1]);
+            SqlParameter param4 = new SqlParameter("@Fun", Bars[2]);
+            SqlParameter param5 = new SqlParameter("@LogDate", Bars[3]);
+            
+            _context.Database.ExecuteSqlRaw("Update character set hunger = @Hunger, sleep = @Sleep, fun = @Fun, logDate = @LogDate where characterid = @CharID ", param2, param3, param4, param5, param1);
 
             try
             {

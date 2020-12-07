@@ -2,15 +2,17 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using The_Blob.Data;
 
 namespace The_Blob.Migrations
 {
     [DbContext(typeof(BlobContext))]
-    partial class BlobContextModelSnapshot : ModelSnapshot
+    [Migration("20201207111327_v10")]
+    partial class v10
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -37,8 +39,8 @@ namespace The_Blob.Migrations
                     b.Property<int>("Hunger")
                         .HasColumnType("int");
 
-                    b.Property<long>("LogDate")
-                        .HasColumnType("bigint");
+                    b.Property<int>("LogDate")
+                        .HasColumnType("int");
 
                     b.Property<string>("Name")
                         .IsRequired()

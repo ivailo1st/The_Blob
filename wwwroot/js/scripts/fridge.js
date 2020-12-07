@@ -1,3 +1,6 @@
+function openFridge() {
+  document.getElementById('js-fridge-element').style.display = "block";
+}
 
 function allowDrop(ev) {
   ev.preventDefault();

@@ -75,6 +75,34 @@ namespace The_Blob.Controllers
 
             return NoContent();
         }
+        [HttpPatch]
+        public async Task<IActionResult> PatchFridge(Fridge fridge)
+        {
+            SqlParameter param1 = new SqlParameter("@FoodName", fridge.FoodName);
+            Fridge fridgeData = _context.Fridge.FromSqlRaw("Select * from fridge where foodname = @FoodName", param1).FirstOrDefault();
+            SqlParameter param2 = new SqlParameter("@Quantity", (fridgeData.Quantity - 1));
+            _context.Database.ExecuteSqlRaw("Update fridge set quantity=@Quantity where foodname = @FoodName", param2, param1);
+
+            _context.Entry(fridge).State = EntityState.Modified;
+
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!FridgeExists(fridge.FridgeId))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return NoContent();
+        }
 
         // POST: api/FridgeAPI
         // To protect from overposting attacks, enable the specific properties you want to bind to, for

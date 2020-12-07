@@ -3,6 +3,10 @@
   font-family: var(--body-font);
 }
 
+#js-fridge-element {
+  display: none;
+}
+
 .fridge-section {
   margin-top: 100px;
   display: grid;

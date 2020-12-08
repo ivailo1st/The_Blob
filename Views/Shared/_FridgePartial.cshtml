@@ -4,14 +4,16 @@
 
 
 <div id="js-fridge-element" class="fridge-element">
-    <h3 class="fridge-name" >Fridge</h3>
+    <div>
+        <a asp-controller="main" asp-action="Index"><img src="~/pics/icon/close.svg" class="corner-item close-btn" /></a>
+    </div>
+    <h3 class="fridge-name">Fridge</h3>
     <section class="fridge-section">
+
 
         @foreach (var item in Model.fridge)
         {
-            <div>
-                <a asp-controller="main" asp-action="Index"><img src="~/pics/icon/close.svg" class="close-btn" /></a>
-            </div>
+
             <ul class="fridge-item">
                 <li class="fridge-quantity">
                     @item.Quantity x
@@ -27,4 +29,4 @@
 
     </section>
     <button class="grocery-btn" onclick="openStore()"> GROCERY</button>
-    </div>
+</div>

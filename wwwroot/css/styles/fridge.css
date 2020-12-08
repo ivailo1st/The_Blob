@@ -67,3 +67,7 @@
   margin-right: auto;
   text-align: center;
 }
+
+.corner-item {
+    grid-area:1/3;
+}

@@ -32,6 +32,8 @@
 }
 
 .fridge-item {
+  padding:0;
+  justify-self: center;
   list-style: none;
 }
 

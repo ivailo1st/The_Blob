@@ -5,39 +5,38 @@
 }
 
 
-<body class="bg-yellow">
-    <div class="row justify-content-center">
-    <div class="col-5 col-md-3 justify-content-center">
-        <strong <class="strongs">Sign Up</strong>
-        <form asp-action="Signup">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="user.Email" class="control-label"></label>
-                <input asp-for="user.Email" class="form-control" />
-                <span asp-validation-for="user.Email" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="user.Password" class="control-label"></label>
-                <input asp-for="user.Password" type="password" class="form-control" />
-                <span asp-validation-for="user.Password" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="character.Name" class="control-label"></label>
-                <input asp-for="character.Name" class="form-control" />
-                <span asp-validation-for="character.Name" class="text-danger"></span>
-            </div>
+<div class="login-element">
+    
+            <strong class="logo logo-welcome">Sign Up</strong>
+            <form asp-action="Signup">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="user.Email" class="control-label"></label>
+                    <input asp-for="user.Email" class="form-control" />
+                    <span asp-validation-for="user.Email" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="user.Password" class="control-label"></label>
+                    <input asp-for="user.Password" type="password" class="form-control" />
+                    <span asp-validation-for="user.Password" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="character.Name" class="control-label"></label>
+                    <input asp-for="character.Name" class="form-control" />
+                    <span asp-validation-for="character.Name" class="text-danger"></span>
+                </div>
 
 
-            <div class="form-group">
-                <input type="submit" value="Sign up" class="LOGSIG-btn" />
-            </div>
-        </form>
-        </div>
-    </div>
-        <p class="strongs strongs-p">Already a User? <a asp-action="Index" class="strongs strongs-b">Login</a> </p>
+                <div class="form-group">
+                    <input type="submit" value="Sign up" class="LOGSIG-btn" />
+                </div>
+            </form>
+        
+    
+    <p class="strongs strongs-p">Already a User? <a asp-action="Index" class="strongs strongs-b">Login</a> </p>
 
 
-</body>
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
+ </div>
+    @section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }

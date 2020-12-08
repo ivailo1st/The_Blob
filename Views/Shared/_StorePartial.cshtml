@@ -4,6 +4,9 @@
 <div id="js-store-element" class="store-element">
     <h3 class="store-name">Store</h3>
     <section class="store-section">
+        <div>
+            <a asp-controller="main" asp-action="Index"><img src="~/pics/icon/close.svg" class="close-btn" /></a>
+        </div>
 
         @foreach (var item in Model.product)
         {

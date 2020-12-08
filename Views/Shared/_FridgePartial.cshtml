@@ -9,12 +9,15 @@
 
         @foreach (var item in Model.fridge)
         {
+            <div>
+                <a asp-controller="main" asp-action="Index"><img src="~/pics/icon/close.svg" class="close-btn" /></a>
+            </div>
             <ul class="fridge-item">
                 <li class="fridge-quantity">
                     @item.Quantity x
                 </li>
                 <li>
-                    <img onclick="updateItem(@item.FridgeId)"class="fridge-image" src="@item.ImageURL" alt="Alternate Text" />
+                    <img onclick="updateItem(@item.FridgeId)" class="fridge-image" src="@item.ImageURL" alt="Alternate Text" />
                 </li>
                 <li class="fridge-percentage">
                     @item.HungerPercentage %

@@ -124,3 +124,11 @@ input[type="text"]:focus {
   font-size: 22px;
   text-decoration-line: underline;
 }
+.close-btn2 {
+    max-width: 45px;
+    max-height: 45px;
+    bottom: 34%;
+    left: 88%;
+    position:fixed;
+    z-index:1;
+}

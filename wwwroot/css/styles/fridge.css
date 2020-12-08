@@ -1,12 +1,16 @@
 ﻿.fridge-name {
-  text-align: center;
-  bottom: 40%;
-  left: 0;
-  position: fixed;
-  text-align: center;
-  font-family: var(--body-font);
-  margin: auto;
-  right: 0;
+   
+    bottom: 34%;
+    left: 0;
+    position: fixed;
+    text-align: center;
+    color: var(--dark-green);
+    font-family: var(--body-font);
+    margin: auto;
+    right: 0;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 35px;
 }
 
 #js-fridge-element {
@@ -69,5 +73,5 @@
 }
 
 .corner-item {
-    grid-area:1/3;
+   float:right;
 }

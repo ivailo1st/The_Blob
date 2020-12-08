@@ -3,7 +3,7 @@ let sleepBar = document.getElementsByClassName('sleep-svg');
 let funBar = document.getElementsByClassName('hunger-svg');
 
 
-setInterval(updateTime, 36000);
+setInterval(updateTime, 5000);
 
 let CharacterId = document.getElementById('js-char-value').innerHTML;
 
@@ -37,25 +37,24 @@ function updateTime() {
       hour = Math.floor(minute / 60);
       minute = minute % 60;
 
-      console.log(
-        'hour:' + hour,
-        'minute:' + minute
-      )
+        console.log(
+            'hour:' + hour,
+            'minute:' + minute
+        );
 
       console.log(data);
 
-      let newHunger = '';
-      let newSleep = '';
-      let newFun = '';
+      let newHunger;
+      let newSleep;
+      let newFun;
 
       //If the blob is awake all bars decreasing
-      if ((hour >= 1) && (data.awake = true)) {
-        newHunger = data.hunger - (hour + '0');
-        newSleep = data.sleep - (hour + '0');
-        newFun = data.fun - (hour + '0');
+      if ((hour >= 1) && (data.awake == true)) {
+        newHunger = Math.max((data.hunger - (hour * 10)), 1);
+        newSleep = Math.max((data.sleep - (hour * 10)),1);
+        newFun = Math.max((data.fun - (hour * 10)),1);
 
-        console.log(
-          newHunger, newLogDate);
+        console.log(newHunger, newLogDate);
 
         //If the bars are above 0 decrease bars
         if (newSleep >= 1 && newFun >= 1 && newHunger >= 1) {
@@ -85,52 +84,86 @@ function updateTime() {
             newLogDate
           ]
 
-          fetch("api/CharacterAPI/", {
-            method: "PATCH",
-            headers: { "Content-Type": "application/json", "Accept": "application/json" },
-            body: JSON.stringify(updateBars)
-          })
+            fetch("api/CharacterAPI/", {
+                method: "PATCH",
+                headers: { "Content-Type": "application/json", "Accept": "application/json" },
+                body: JSON.stringify(updateBars)
+            });
         };
 
         //If blob is sleeping decrease only fun and hunger + increase sleep
-      } else if ((hour >= 1) && (data.awake = false)) {
-        newHunger = data.hunger - (hour + '0');
-        newFun = data.fun - (hour + '0');
-        newSleep = data.sleep + (hour + '0');
+      } else if ((hour >= 1) && (data.awake == false)) {
+        newHunger = Math.max((data.hunger - (hour * 10)),1);
+        newFun = Math.max((data.fun - (hour * 10)),1);
+        newSleep = data.sleep + (hour * 10);
 
+          console.log("New Sleep: " + newSleep);
 
         // Allow increase until sleep is 100
         if (newSleep <= 100) {
-          let updateBars = [
-            newHunger,
-            newFun,
-            newSleep,
-            newLogDate
-          ]
+            if (newFun < 1 && newHunger < 1) {
+                let updateBars = [
+                    1,
+                    1,
+                    newSleep,
+                    newLogDate
+                ]
 
-          fetch("api/CharacterAPI/", {
-            method: "PATCH",
-            headers: { "Content-Type": "application/json", "Accept": "application/json" },
-            body: JSON.stringify(updateBars)
-          })
+                fetch("api/CharacterAPI/", {
+                    method: "PATCH",
+                    headers: { "Content-Type": "application/json", "Accept": "application/json" },
+                    body: JSON.stringify(updateBars)
+                });
+            }
+            else {
+                let updateBars = [
+                    newHunger,
+                    newFun,
+                    newSleep,
+                    newLogDate
+                ]
+
+                fetch("api/CharacterAPI/", {
+                    method: "PATCH",
+                    headers: { "Content-Type": "application/json", "Accept": "application/json" },
+                    body: JSON.stringify(updateBars)
+                });
+            }
           // Dont allow the sleep to increase over 100
         } else {
-          let updateBars = [
-            newHunger,
-            newFun,
-            100,
-            newLogDate
+            if (newFun < 1 && newHunger < 1) {
+                let updateBars = [
+                    1,
+                    1,
+                    100,
+                    newLogDate
+                ]
+                console.log("I am here");
+                fetch("api/CharacterAPI", {
+                    method: "PATCH",
+                    headers: { "Content-Type": "application/json", "Accept": "application/json" },
+                    body: JSON.stringify(updateBars)
+                });
 
-          ]
-          fetch("api/CharacterAPI/", {
-            method: "PATCH",
-            headers: { "Content-Type": "application/json", "Accept": "application/json" },
-            body: JSON.stringify(updateBars)
+            } else {
+              let updateBars = [
+                newHunger,
+                newFun,
+                100,
+                newLogDate
 
-          })
-        };
+              ]
+                fetch("api/CharacterAPI/", {
+                    method: "PATCH",
+                    headers: { "Content-Type": "application/json", "Accept": "application/json" },
+                    body: JSON.stringify(updateBars)
 
-      }
+                });
+              }
+
+
+            }
+        }
     });
-};
+}
 

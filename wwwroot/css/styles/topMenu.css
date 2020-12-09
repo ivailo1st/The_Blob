@@ -52,6 +52,10 @@
   flex-direction: column;
 }
 
+.topMenuComponent--statBars .sleep-svg, .topMenuComponent--statBars svg.volleyball-svg{
+    margin-left: 6px;
+}
+
 .topMenuComponent--statBars-bar {
   border-radius: 0.5rem;
   width: 1.75rem;

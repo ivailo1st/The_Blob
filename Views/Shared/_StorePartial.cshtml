@@ -2,8 +2,14 @@
 
 
 <div id="js-store-element" class="store-element">
-    <h3 class="store-name">Store</h3>
+    <a asp-controller="main" asp-action="Index" class="close-btn2"><img src="~/pics/icon/close.svg"/></a>
+
+    <strong class="fridge-name">Store</strong>
+
+    
+
     <section class="store-section">
+
 
         @foreach (var item in Model.product)
         {

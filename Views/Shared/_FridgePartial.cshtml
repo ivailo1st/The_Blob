@@ -4,17 +4,21 @@
 
 
 <div id="js-fridge-element" class="fridge-element">
-    <h3 class="fridge-name" >Fridge</h3>
+ <a asp-controller="main" asp-action="Index" class="close-btn2"><img src="~/pics/icon/close.svg"/></a>
+
+    <strong class="fridge-name">Fridge</strong>
     <section class="fridge-section">
+
 
         @foreach (var item in Model.fridge)
         {
+
             <ul class="fridge-item">
                 <li class="fridge-quantity">
                     @item.Quantity x
                 </li>
                 <li>
-                    <img onclick="updateItem(@item.FridgeId)"class="fridge-image" src="@item.ImageURL" alt="Alternate Text" />
+                    <img onclick="updateItem(@item.FridgeId)" class="fridge-image" src="@item.ImageURL" alt="Alternate Text" />
                 </li>
                 <li class="fridge-percentage">
                     @item.HungerPercentage %
@@ -24,4 +28,4 @@
 
     </section>
     <button class="grocery-btn" onclick="openStore()"> GROCERY</button>
-    </div>
+</div>

@@ -3,7 +3,7 @@
   min-height: 300px;
   position: relative;
   display: flex;
-  flex-direction: column;
+  grid-area:main;
   align-items: center;
 }
 
@@ -31,14 +31,24 @@
   fill: var(--light-green);
 }
 
+
+
+
+
 .character-floor {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  padding: 15px;
-  height: 40%;
-  background-color: var(--dark-green);
-  z-index: -5;
+    display: grid;
+    grid-template-areas: 'main main main' 'footer footer footer';
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 15px;
+    height: 40%;
+    background-color: var(--dark-green);
+    z-index: -5;
+}
+.menu-container {
+    display: grid;
+    grid-area: footer;
 }
 
 .faces {

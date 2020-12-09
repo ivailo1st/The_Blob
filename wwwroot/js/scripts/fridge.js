@@ -20,16 +20,17 @@ function openFridge() {
 // }
 
 function updateItem(FridgeId) {
-  fetch("api/fridgeapi/" + FridgeId)
+    console.log(FridgeId);
+  fetch("api/fridgeapi/fridge/" + FridgeId)
     .then(response => response.json())
     .then(data => {
-      console.log(data)
-
+        console.log(data);
+        let foodPercent = data.hungerPercentage;
       if (data.quantity > 1) {
-        console.log(data.quantity)
+          console.log("First Condition: " + data.quantity);
         let newQuantity = data.quantity - 1;
 
-        fetch("api/fridgeapi" + FridgeId + newQuantity, {
+        fetch("api/fridgeapi/" + FridgeId, {
           method: "PATCH",
           headers: { "Content-Type": "application/json", "Accept": "application/json" },
         })
@@ -42,7 +43,7 @@ function updateItem(FridgeId) {
           .then(response => response.json())
           .then(data => {
 
-            let newHunger = Math.min((data.hunger + data.hungerPercentage), 100);
+            let newHunger = Math.min((data.hunger + foodPercent), 100);
             let updateHunger = [
               newHunger
             ]
@@ -64,7 +65,6 @@ function updateItem(FridgeId) {
         })
           .then(response => response.json())
           .then(json => console.log(json)).catch(err => console.log(err));
-        document.getElementById("js-fridge-item").style.display = "none";
         giveMoney();
 
         fetch("api/CharacterAPI/" + CharacterId)

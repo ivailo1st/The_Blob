@@ -44,6 +44,20 @@ namespace The_Blob.Controllers
             return fridge;
         }
 
+        [HttpGet("fridge/{fridgeId}")]
+        public ActionResult<Fridge> GetFridge(int fridgeId)
+        {
+            SqlParameter param1 = new SqlParameter("@FridgeID", fridgeId);
+            Fridge fridge = _context.Fridge.FromSqlRaw("Select * from fridge where fridgeId = @FridgeID", param1).FirstOrDefault();
+
+            if (fridge == null)
+            {
+                return NotFound();
+            }
+
+            return fridge;
+        }
+
         // PUT: api/FridgeAPI/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.

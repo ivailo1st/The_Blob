@@ -144,14 +144,20 @@ namespace The_Blob.Controllers
         public async Task<IActionResult> PatchCharacter(long[] Bars)
         {
             Character sessionCharacter = HttpContext.Session.GetJson<Character>("Character");
-            
             SqlParameter param1 = new SqlParameter("@CharID", sessionCharacter.CharacterId);
-            SqlParameter param2 = new SqlParameter("@Hunger", Bars[0]);
-            SqlParameter param3 = new SqlParameter("@Sleep", Bars[1]);
-            SqlParameter param4 = new SqlParameter("@Fun", Bars[2]);
-            SqlParameter param5 = new SqlParameter("@LogDate", Bars[3]);
+            if (Bars.Length != 1) {                 
+                SqlParameter param2 = new SqlParameter("@Hunger", Bars[0]);
+                SqlParameter param3 = new SqlParameter("@Sleep", Bars[1]);
+                SqlParameter param4 = new SqlParameter("@Fun", Bars[2]);
+                SqlParameter param5 = new SqlParameter("@LogDate", Bars[3]);
+                _context.Database.ExecuteSqlRaw("Update character set hunger = @Hunger, sleep = @Sleep, fun = @Fun, logDate = @LogDate where characterid = @CharID ", param2, param3, param4, param5, param1);
+            }
+            else
+            {          
+                SqlParameter param2 = new SqlParameter("@Hunger", Bars[0]);
+                _context.Database.ExecuteSqlRaw("Update character set hunger = @Hunger where characterid = @CharID ", param2, param1);
+            }
             
-            _context.Database.ExecuteSqlRaw("Update character set hunger = @Hunger, sleep = @Sleep, fun = @Fun, logDate = @LogDate where characterid = @CharID ", param2, param3, param4, param5, param1);
 
             try
             {

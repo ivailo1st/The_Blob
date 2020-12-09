@@ -88,6 +88,14 @@
 
 .barfill {
  position: absolute;   
+ transform-origin:bottom;
+ animation: fill 5s infinite alternate-reverse;
+
+}
+
+@keyframes fill {
+    from {transform:scaleY(0.1);}
+    to {transform:scaleY(1.0);}
 }
 
 

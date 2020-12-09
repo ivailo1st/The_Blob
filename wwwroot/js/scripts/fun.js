@@ -3,6 +3,8 @@ element = document.getElementById("js-fun-item");
 
 element.addEventListener("click", function (e) {
   e.preventDefault;
+  var audio = new Audio('../../audio/Laugh.mp3');
+  audio.play();
 
   // -> removing the class
   element.classList.remove("bounce");

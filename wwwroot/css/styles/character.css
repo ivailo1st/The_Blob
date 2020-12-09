@@ -42,10 +42,11 @@
 }
 
 .faces {
-   width: 141px;
-   height:141px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-36%, -32%);
+  width: 141px;
+  height: 141px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-36%, -32%);
+  background-repeat: no-repeat;
 }

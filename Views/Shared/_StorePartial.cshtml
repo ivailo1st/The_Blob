@@ -2,28 +2,34 @@
 
 
 <div id="js-store-element" class="store-element">
-    <a asp-controller="main" asp-action="Index" class="close-btn2"><img src="~/pics/icon/close.svg"/></a>
+    <a asp-controller="main" asp-action="Index" class="close-btn2"><img src="~/pics/icon/close.svg" /></a>
+   
+    <svg onclick="openFridge()" class="back-btn2" 0 0 55 91" fill="" xmlns="http://www.w3.org/2000/svg">
+        <path class="back-btn2" d="M2.22069 49.0508L42.7168 89.5462C43.6535 90.4836 44.9038 91 46.237 91C47.5701 91 48.8204 90.4836 49.7571 89.5462L52.7393 86.5647C54.6799 84.6219 54.6799 81.4643 52.7393 79.5245L18.7337 45.5189L52.7771 11.4755C53.7137 10.5382 54.2308 9.28858 54.2308 7.95615C54.2308 6.62223 53.7137 5.37265 52.7771 4.43455L49.7948 1.45377C48.8574 0.516403 47.6079 0 46.2747 0C44.9415 0 43.6912 0.516403 42.7546 1.45377L2.22069 41.9862C1.28184 42.9265 0.766178 44.182 0.769138 45.5166C0.766178 46.8565 1.28184 48.1112 2.22069 49.0508Z" fill="#657b70" />
+    </svg>
 
     <strong class="fridge-name">Store</strong>
 
-    
+
 
     <section class="store-section">
 
 
         @foreach (var item in Model.product)
         {
-            <ul class="store-item">
-                <li class="store-price">
-                    @item.ProductPrice
-                </li>
-                <li>
-                    <button class="store-button" onclick="addItem('@item.ProductName',@item.ProductPercentage,'@item.ImageURL',@item.ProductPrice,@Model.character.CharacterId)"><img class="store-image" src="@item.ImageURL" alt="Alternate Text" /></button>
-                </li>
-                <li class="store-percentage">
-                    @item.ProductPercentage
-                </li>
-            </ul>
+           
+        <ul class="store-item">
+            <li id="id-item-signal" class="item-signal animate__pulse"> +1</li>
+            <li class="store-price">
+                @item.ProductPrice
+            </li>
+            <li>
+                <button class="store-button" onclick="addItem('@item.ProductName',@item.ProductPercentage,'@item.ImageURL',@item.ProductPrice,@Model.character.CharacterId)"><img class="store-image" src="@item.ImageURL" alt="Alternate Text" /></button>
+            </li>
+            <li class="store-percentage">
+                @item.ProductPercentage
+            </li>
+        </ul>
         }
 
     </section>

@@ -5,7 +5,7 @@
 
 function addItemSignal() {
   document.getElementById("id-item-signal").style.display = "block";
-  setTimeout(closeItemSignal, 1000);
+  setTimeout(closeItemSignal, 36000);
 }
 
 function closeItemSignal() {
@@ -41,34 +41,34 @@ function addItem(itemName, itemPercent, itemURL, itemPrice, charID) {
           }
           else {
             //Fetch for Creating a new Fridge Item
-              fetch("api/fridgeapi", {
-                  method: "POST",
-                  headers: { "Content-Type": "application/json", "Accept": "application/json" },
-                  body: JSON.stringify(addQuery)
+            fetch("api/fridgeapi", {
+              method: "POST",
+              headers: { "Content-Type": "application/json", "Accept": "application/json" },
+              body: JSON.stringify(addQuery)
 
-              })
-            .then(response => response.json())
-            .then(data => {
+            })
+              .then(response => response.json())
+              .then(data => {
                 fetch("api/fridgeapi/" + itemName)
-                    .then(response => response.json())
-                    .then(data => {
-                        console.log(data.fridgeId);
+                  .then(response => response.json())
+                  .then(data => {
+                    console.log(data.fridgeId);
 
-                        let junctionQuery = {
-                            characterId: charID,
-                            character: null,
-                            fridgeId: data.fridgeId,
-                            fridge: null
-                        }
-                        //Fetch for Creating new CharacterFridge item
-                        fetch("api/CharacterFridgeAPI", {
-                            method: "POST",
-                            headers: { "Content-Type": "application/json", "Accept": "application/json" },
-                            body: JSON.stringify(junctionQuery)
+                    let junctionQuery = {
+                      characterId: charID,
+                      character: null,
+                      fridgeId: data.fridgeId,
+                      fridge: null
+                    }
+                    //Fetch for Creating new CharacterFridge item
+                    fetch("api/CharacterFridgeAPI", {
+                      method: "POST",
+                      headers: { "Content-Type": "application/json", "Accept": "application/json" },
+                      body: JSON.stringify(junctionQuery)
 
-                        })
-                    });
-            });
+                    })
+                  });
+              });
           }
         });
     });

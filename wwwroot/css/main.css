@@ -6,6 +6,7 @@
 @import "styles/botMenu.css";
 @import "styles/variables.css";
 @import "styles/login.css";
+@import "styles/fun.css";
 
 .body {
   background-color: var(--beige);

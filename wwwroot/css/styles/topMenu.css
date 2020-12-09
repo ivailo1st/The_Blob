@@ -83,11 +83,11 @@
 }
 
 .bargrey {
-    width: 100%;
+    position: relative;
 }
 
 .barfill {
-    width: 1%; 
+ position: absolute;   
 }
 
 

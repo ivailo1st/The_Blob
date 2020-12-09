@@ -88,6 +88,7 @@
 
 .barfill {
  position: absolute;   
+ transform-origin:bottom;
 }
 
 

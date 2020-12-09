@@ -42,7 +42,8 @@
 }
 
 .faces {
-  width: 175px;
-  z-index: 5;
-  margin-top: 120px;
+  width: 132px;
+  position:absolute;
+  bottom: 42%;
+  left: 37%;
 }

@@ -10,8 +10,7 @@ element.addEventListener("click", function (e) {
   // -> and re-adding the class
   element.classList.add("bounce");
 
-
-
   giveMoney();
+
 
 }, false);

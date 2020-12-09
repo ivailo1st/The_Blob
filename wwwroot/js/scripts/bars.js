@@ -21,25 +21,26 @@ function ifAsleep() {
         document.getElementById("bottomSleepIcon").style.filter = "brightness(1)";
         document.getElementById("js-face").style.backgroundImage = "none";
 
-          if (data.hunger >= 80 || data.sleep >= 80 || data.fun >= 80) {
-              document.getElementById("js-face").style.backgroundImage = "none";
-              document.getElementById("js-face").style.backgroundImage = "url('/pics/faces/happy.svg')";
-          }
-          else if ((data.hunger >= 50 || data.sleep >= 50 || data.fun >= 50) && (data.hunger < 80 || data.sleep < 80 || data.fun < 80)) {
-              document.getElementById("js-face").style.backgroundImage = "none";
-              document.getElementById("js-face").style.backgroundImage = "url('/pics/faces/average.svg')";
-          }
-          else if ((data.hunger >= 30 || data.sleep >= 30 || data.fun >= 30) && (data.hunger < 50 || data.sleep < 50 || data.fun < 50)) {
-              document.getElementById("js-face").style.backgroundImage = "none";
-              document.getElementById("js-face").style.backgroundImage = "url('/pics/faces/sad.svg')";
-          }
-          else if ((data.hunger >= 1 || data.sleep >= 1 || data.fun >= 1) && (data.hunger < 30 || data.sleep < 30 || data.fun < 30)) {
-              document.getElementById("js-face").style.backgroundImage = "none";
-              document.getElementById("js-face").style.backgroundImage = "url('/pics/faces/angry.svg')";
-          }
+        if (data.hunger >= 80 || data.sleep >= 80 || data.fun >= 80) {
+          document.getElementById("js-face").style.backgroundImage = "none";
+          document.getElementById("js-face").style.backgroundImage = "url('/pics/faces/happy.svg')";
+        }
+        else if ((data.hunger >= 50 || data.sleep >= 50 || data.fun >= 50) && (data.hunger < 80 || data.sleep < 80 || data.fun < 80)) {
+          document.getElementById("js-face").style.backgroundImage = "none";
+          document.getElementById("js-face").style.backgroundImage = "url('/pics/faces/average.svg')";
+        }
+        else if ((data.hunger >= 30 || data.sleep >= 30 || data.fun >= 30) && (data.hunger < 50 || data.sleep < 50 || data.fun < 50)) {
+          document.getElementById("js-face").style.backgroundImage = "none";
+          document.getElementById("js-face").style.backgroundImage = "url('/pics/faces/sad.svg')";
+        }
+        else if ((data.hunger >= 1 || data.sleep >= 1 || data.fun >= 1) && (data.hunger < 30 || data.sleep < 30 || data.fun < 30)) {
+          document.getElementById("js-face").style.backgroundImage = "none";
+          document.getElementById("js-face").style.backgroundImage = "url('/pics/faces/angry.svg')";
+        }
       }
     });
 }
+
 
 function goToSleep() {
   fetch("api/CharacterAPI/" + CharacterId)
@@ -86,6 +87,27 @@ function updateTime() {
         'minute:' + minute
 
       );
+
+      let element = document.getElementById("js-increase-hunger");
+      let fun = document.getElementById("js-increase-fun");
+      let sleep = document.getElementById("js-increase-sleep");
+      element.classList.remove("barfill");
+      fun.classList.remove("barfill");
+      sleep.classList.remove("barfill");
+
+      element.style.transform = "scaleY(" + data.hunger / 100 + ")";
+      fun.style.transform = "scaleY(" + data.fun / 100 + ")";
+      sleep.style.transform = "scaleY(" + data.sleep / 100 + ")";
+
+      void element.offsetWidth;
+      void fun.offsetWidth;
+      void sleep.offsetWidth;
+      // -> and re-adding the class
+      element.classList.add("barfill");
+      fun.classList.add("barfill");
+      sleep.classList.add("barfill");
+
+
 
       console.log(data);
       if (data.awake) {

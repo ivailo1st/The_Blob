@@ -37,10 +37,10 @@
 }
 
 #textCurrency {
-  background-image:url(/pics/dollar.svg);
-  background-position:center;
+  background-image: url(/pics/dollar.svg);
+  background-position: center;
   background-repeat: no-repeat;
-  text-align:center;
+  text-align: center;
   position: absolute;
   font-size: 1.6rem;
   font-family: Aguafina Script;
@@ -52,8 +52,9 @@
   flex-direction: column;
 }
 
-.topMenuComponent--statBars .sleep-svg, .topMenuComponent--statBars svg.volleyball-svg{
-    margin-left: 6px;
+.topMenuComponent--statBars .sleep-svg,
+.topMenuComponent--statBars svg.volleyball-svg {
+  margin-left: 6px;
 }
 
 .topMenuComponent--statBars-bar {
@@ -83,19 +84,17 @@
 }
 
 .bargrey {
-    position: relative;
+  position: relative;
 }
 
 .barfill {
- position: absolute;   
- transform-origin:bottom;
- animation: fill 5s infinite alternate-reverse;
-
+  position: absolute;
+  transform-origin: bottom;
+  animation: fill 5s;
 }
 
 @keyframes fill {
-    from {transform:scaleY(0.1);}
-    to {transform:scaleY(1.0);}
+  from {
+    transform: scaleY(0.01);
+  }
 }
-
-

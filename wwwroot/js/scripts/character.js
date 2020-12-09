@@ -41,59 +41,71 @@ Shadow.animate(
 
 );
 
-function setBars(hunger,sleep,fun) {
-    fetch("api/CharacterAPI/" + CharacterId)
-        .then(response => response.json())
-        .then(data => {
-            let setDate = data.logDate;
-            let currentDate = new Date();
-            let newLogDate = currentDate.getTime();
-            let change = newLogDate - setDate;
-            console.log(change)
-            let hour, minute, seconds;
-            seconds = Math.floor(change / 1000);
-            minute = Math.floor(seconds / 60);
-            seconds = seconds % 60;
-            hour = Math.floor(minute / 60);
-            minute = minute % 60;
+function setBars(hunger, sleep, fun) {
+  fetch("api/CharacterAPI/" + CharacterId)
+    .then(response => response.json())
+    .then(data => {
+      let setDate = data.logDate;
+      let currentDate = new Date();
+      let newLogDate = currentDate.getTime();
+      let change = newLogDate - setDate;
+      console.log(change)
+      let hour, minute, seconds;
+      seconds = Math.floor(change / 1000);
+      minute = Math.floor(seconds / 60);
+      seconds = seconds % 60;
+      hour = Math.floor(minute / 60);
+      minute = minute % 60;
 
-            console.log(
-                'hour:' + hour,
-                'minute:' + minute
+      console.log(
+        'hour:' + hour,
+        'minute:' + minute
 
-            );
+      );
 
-            let updateBars = [
-                hunger,
-                sleep,
-                fun,
-                newLogDate
-            ]
+      let updateBars = [
+        hunger,
+        sleep,
+        fun,
+        newLogDate
+      ]
 
-            console.log(updateBars)
-            fetch("api/CharacterAPI/", {
-                method: "PATCH",
-                headers: { "Content-Type": "application/json", "Accept": "application/json" },
-                body: JSON.stringify(updateBars)
-            })
-        });
+      console.log(updateBars)
+      fetch("api/CharacterAPI/", {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json", "Accept": "application/json" },
+        body: JSON.stringify(updateBars)
+      })
+    });
 }
 
 function giveMoney() {
-    let userCurrency = parseInt(document.getElementById("textCurrency").innerHTML);
-    let newCurrency = userCurrency + 50;
-    //Fetch for Updating Character Currency
-    fetch("api/characterapi/" + newCurrency, {
-        method: "PATCH",
-        headers: { "content-type": "application/json", "accept": "application/json" }
+  let userCurrency = parseInt(document.getElementById("textCurrency").innerHTML);
+  let newCurrency = userCurrency + 50;
+  //Fetch for Updating Character Currency
+  fetch("api/characterapi/" + newCurrency, {
+    method: "PATCH",
+    headers: { "content-type": "application/json", "accept": "application/json" }
 
-    })
-        .then(response => response.json())
-        .then(json => console.log(json)).catch(err => console.log(err));
-    document.getElementById("textCurrency").innerHTML = newCurrency;
+  })
+    .then(response => response.json())
+    .then(json => console.log(json)).catch(err => console.log(err));
+  document.getElementById("textCurrency").innerHTML = newCurrency;
 }
 
-
+function sendEmail() {
+  Email.send({
+    Host: "	smtp.elasticemail.com",
+    Username: "gabcoo1110@gmail.com",
+    Password: "33C6D8AC709BCF19D3B7499A0628A1DD0052",
+    To: 'eaaaaj@students.eaaa.dk',
+    From: "gabcoo1110@gmail.com",
+    Subject: "Blob is almost dead",
+    Body: "Well that was easy!!",
+  }).then(
+    message => alert(message)
+  )
+}
 
 
 

@@ -93,9 +93,27 @@
 
 }
 
-@keyframes fill {
+@keyframes hungerfill {
     from {transform:scaleY(0.1);}
     to {transform:scaleY(1.0);}
 }
 
+@keyframes sleepfill {
+    from {
+        transform: scaleY(0.1);
+    }
 
+    to {
+        transform: scaleY(1.0);
+    }
+}
+
+@keyframes funfill {
+    from {
+        transform: scaleY(0.1);
+    }
+
+    to {
+        transform: scaleY(1.0);
+    }
+}

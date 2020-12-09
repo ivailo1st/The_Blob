@@ -22,6 +22,7 @@ function updateItem(FridgeId) {
     .then(response => response.json())
     .then(data => {
       console.log(data)
+
       if (data.quantity > 1) {
         console.log(data.quantity)
         fetch("api/fridgeapi" + FridgeId, {

@@ -41,21 +41,16 @@ function updateTime() {
         'hour:' + hour,
         'minute:' + minute
       )
-
       console.log(data);
-
-      let newHunger = '';
-      let newSleep = '';
-      let newFun = '';
 
       //If the blob is awake all bars decreasing
       if ((hour >= 1) && (data.awake = true)) {
-        newHunger = data.hunger - (hour + '0');
-        newSleep = data.sleep - (hour + '0');
-        newFun = data.fun - (hour + '0');
+        let newHunger = data.hunger - (hour + '0');
+        let newSleep = data.sleep - (hour + '0');
+        let newFun = data.fun - (hour + '0');
 
         console.log(
-          newHunger, newLogDate);
+          newHunger, 'and', newLogDate);
 
         //If the bars are above 0 decrease bars
         if (newSleep >= 1 && newFun >= 1 && newHunger >= 1) {
@@ -65,7 +60,6 @@ function updateTime() {
             newFun,
             newLogDate
           ]
-
           console.log(updateBars)
           fetch("api/CharacterAPI/", {
             method: "PATCH",

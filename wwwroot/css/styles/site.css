@@ -131,3 +131,12 @@ input[type="text"]:focus {
   position: fixed;
   z-index: 1;
 }
+
+.back-btn2 {
+    
+    top: 59%;
+    left: -5%;
+    position: fixed;
+    z-index: 1;
+    transform:scale(0.80);
+}

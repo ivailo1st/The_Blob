@@ -40,6 +40,7 @@ function updateTime() {
       console.log(
         'hour:' + hour,
         'minute:' + minute
+
       );
 
       console.log(data);
@@ -63,7 +64,6 @@ function updateTime() {
             newFun,
             newLogDate
           ]
-
           console.log(updateBars)
           fetch("api/CharacterAPI/", {
             method: "PATCH",

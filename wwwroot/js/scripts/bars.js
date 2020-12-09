@@ -2,7 +2,7 @@ let hungerBar = document.getElementsByClassName('hunger-svg');
 let sleepBar = document.getElementsByClassName('sleep-svg');
 let funBar = document.getElementsByClassName('hunger-svg');
 
-setInterval(updateTime, 5000);
+setInterval(updateTime, 60000);
 
 let CharacterId = document.getElementById('js-char-value').innerHTML;
 
@@ -72,13 +72,7 @@ function updateTime() {
       );
 
       console.log(data);
-
-      let newHunger;
-      let newSleep;
-      let newFun;
-
-      //If the blob is awake all bars decreasing
-      if ((hour >= 1) && (data.awake == true)) {
+      if (data.awake == true) {
         if (data.hunger || data.sleep || data.fun >= 80) {
           document.getElementById("js-face").style.backgroundImage = "none";
           document.getElementById("js-face").style.backgroundImage = "url('/pics/faces/happy.svg')";
@@ -95,7 +89,14 @@ function updateTime() {
           document.getElementById("js-face").style.backgroundImage = "none";
           document.getElementById("js-face").style.backgroundImage = "url('/pics/faces/angry.svg')";
         }
+      }
 
+      let newHunger;
+      let newSleep;
+      let newFun;
+
+      //If the blob is awake all bars decreasing
+      if ((hour >= 1) && (data.awake == true)) {
         newHunger = Math.max((data.hunger - (hour * 10)), 1);
         newSleep = Math.max((data.sleep - (hour * 10)), 1);
         newFun = Math.max((data.fun - (hour * 10)), 1);

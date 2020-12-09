@@ -93,15 +93,19 @@ function giveMoney() {
   document.getElementById("textCurrency").innerHTML = newCurrency;
 }
 
+
+
 function sendEmail() {
+  let userEmail = document.getElementById("js-user-email").innerHTML;
+  console.log(userEmail)
   Email.send({
     Host: "	smtp.elasticemail.com",
     Username: "gabcoo1110@gmail.com",
     Password: "33C6D8AC709BCF19D3B7499A0628A1DD0052",
-    To: 'eaaaaj@students.eaaa.dk',
+    To: userEmail,
     From: "gabcoo1110@gmail.com",
-    Subject: "Blob is almost dead",
-    Body: "Well that was easy!!",
+    Subject: "Your Blob is almost dead",
+    Body: "Don't forget to take care of your Blob, ",
   }).then(
     message => alert(message)
   )

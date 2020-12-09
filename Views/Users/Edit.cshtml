@@ -20,13 +20,14 @@
                <a asp-controller="main" asp-action="Index"><img src="~/pics/icon/close.svg" class="close-btn" /></a>
             </div>
             <br />
+            <div id="js-user-email">@Model.user.Email </div>
                   <form asp-action="Edit">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                     <input type="hidden" asp-for="user.UserId" />
                     <div class="form-group">
                         <label asp-for="user.Email" class="control-label"></label>
                         <input asp-for="user.Email" class="form-control" />
-                        <span id="js-user-email" asp-validation-for="user.Email" class="text-danger"></span>
+                        <span  asp-validation-for="user.Email" class="text-danger"></span>
                     </div>
                     <div class="form-group">
                         <label asp-for="user.Password" class="control-label"></label>

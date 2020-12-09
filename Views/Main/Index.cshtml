@@ -5,6 +5,7 @@
     ViewData["UserID"] = Model.user.UserId;
     ViewData["UserFirstLetter"] = char.ToUpper(Model.user.Email[0]);
     ViewData["Currency"] = Model.character.Currency;
+    ViewData["Additional Scripts"] = "onload = 'ifAsleep()'";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 

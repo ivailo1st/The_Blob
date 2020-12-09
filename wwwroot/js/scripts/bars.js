@@ -2,16 +2,36 @@ let hungerBar = document.getElementsByClassName('hunger-svg');
 let sleepBar = document.getElementsByClassName('sleep-svg');
 let funBar = document.getElementsByClassName('hunger-svg');
 
-
 setInterval(updateTime, 360000);
 
 let CharacterId = document.getElementById('js-char-value').innerHTML;
+
+
+function ifAsleep() {
+    fetch("api/CharacterAPI/" + CharacterId)
+        .then(response => response.json())
+        .then(data => {
+            let newAwake = !data.awake;
+            if (newAwake) {
+                document.getElementById("bottomSleepIcon").style.filter = "brightness(0.75)";
+            }
+            else {
+                document.getElementById("bottomSleepIcon").style.filter = "brightness(1)";
+            }
+        });
+}
 
 function goToSleep() {
   fetch("api/CharacterAPI/" + CharacterId)
     .then(response => response.json())
     .then(data => {
-      let newAwake = !data.awake;
+      let newAwake = !data.awake
+        if (newAwake) {
+            document.getElementById("bottomSleepIcon").style.filter = "brightness(1)";
+        }
+        else {
+            document.getElementById("bottomSleepIcon").style.filter = "brightness(0.75)";
+        }
       fetch("api/CharacterAPI/Bars/" + newAwake, {
         method: "PATCH",
         headers: { "Content-Type": "application/json", "Accept": "application/json" },

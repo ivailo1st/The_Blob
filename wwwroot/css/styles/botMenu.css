@@ -29,6 +29,7 @@
 }
 
 .menu-item img {
+  cursor: pointer;
   display: block;
   height: auto;
   max-width: 100%;

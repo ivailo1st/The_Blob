@@ -5,6 +5,8 @@ function openFridge() {
 
 
 function updateItem(FridgeId) {
+  var audio = new Audio('../../audio/Eating.mp3');
+  audio.play();
   console.log(FridgeId);
   fetch("api/fridgeapi/fridge/" + FridgeId)
     .then(response => response.json())

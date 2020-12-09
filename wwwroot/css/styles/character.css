@@ -37,7 +37,7 @@
 
 .character-floor {
     display: grid;
-    grid-template-areas: 'main main main' 'footer footer footer';
+    grid-template-areas: 'main' 'footer footer footer footer';
     position: absolute;
     bottom: 0;
     width: 100%;

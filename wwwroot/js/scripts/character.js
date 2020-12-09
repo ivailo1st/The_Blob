@@ -41,6 +41,44 @@ Shadow.animate(
 
 );
 
+function setBars(hunger,sleep,fun) {
+    fetch("api/CharacterAPI/" + CharacterId)
+        .then(response => response.json())
+        .then(data => {
+            let setDate = data.logDate;
+            let currentDate = new Date();
+            let newLogDate = currentDate.getTime();
+            let change = newLogDate - setDate;
+            console.log(change)
+            let hour, minute, seconds;
+            seconds = Math.floor(change / 1000);
+            minute = Math.floor(seconds / 60);
+            seconds = seconds % 60;
+            hour = Math.floor(minute / 60);
+            minute = minute % 60;
+
+            console.log(
+                'hour:' + hour,
+                'minute:' + minute
+
+            );
+
+            let updateBars = [
+                hunger,
+                sleep,
+                fun,
+                newLogDate
+            ]
+
+            console.log(updateBars)
+            fetch("api/CharacterAPI/", {
+                method: "PATCH",
+                headers: { "Content-Type": "application/json", "Accept": "application/json" },
+                body: JSON.stringify(updateBars)
+            })
+        });
+}
+
 function giveMoney() {
     let userCurrency = parseInt(document.getElementById("textCurrency").innerHTML);
     let newCurrency = userCurrency + 50;

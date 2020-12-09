@@ -4,30 +4,17 @@ function openFridge() {
 }
 
 
-
-// function allowDrop(ev) {
-//   ev.preventDefault();
-// }
-
-// function drag(ev) {
-//   ev.dataTransfer.setData("image", ev.target.id);
-// }
-
-// function drop(ev) {
-//   ev.preventDefault();
-//   var item = ev.dataTransfer.getData("image");
-//   ev.target.appendChild(document.getElementById(item));
-// }
-
 function updateItem(FridgeId) {
-    console.log(FridgeId);
+  var audio = new Audio('../../audio/Eating.mp3');
+  audio.play();
+  console.log(FridgeId);
   fetch("api/fridgeapi/fridge/" + FridgeId)
     .then(response => response.json())
     .then(data => {
-        console.log(data);
-        let foodPercent = data.hungerPercentage;
+      console.log(data);
+      let foodPercent = data.hungerPercentage;
       if (data.quantity > 1) {
-          console.log("First Condition: " + data.quantity);
+        console.log("First Condition: " + data.quantity);
         let newQuantity = data.quantity - 1;
 
         fetch("api/fridgeapi/" + FridgeId, {

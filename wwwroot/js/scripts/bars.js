@@ -3,7 +3,7 @@ let sleepBar = document.getElementsByClassName('sleep-svg');
 let funBar = document.getElementsByClassName('hunger-svg');
 
 
-setInterval(updateTime, 3600);
+setInterval(updateTime, 360000);
 
 let CharacterId = document.getElementById('js-char-value').innerHTML;
 

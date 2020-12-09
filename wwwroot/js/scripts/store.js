@@ -62,7 +62,7 @@ function addItem(itemName, itemPercent, itemURL, itemPrice, charID) {
     });
 
   //Currency Deduction
-  let userCurrency = document.getElementById("textCurrency").innerHTML;
+  let userCurrency = parseInt(document.getElementById("textCurrency").innerHTML);
   let newCurrency = userCurrency - itemPrice;
   console.log(newCurrency);
   if (newCurrency > 0) {

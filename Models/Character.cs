@@ -20,32 +20,6 @@ namespace The_Blob.Models {
 
         public int UserId { get; set; }
         public virtual User user { get; set; }
-        public void CharacterCreation()
-        {
-
-        }
-
-        public void LowerBars()
-        {
-
-        }
-
-        public void CharacterEdit()
-        {
-
-        }
-        public void LowerSleep()
-        {
-
-        }
-        public void IncreaseSleep()
-        {
-
-        }
-        public void IncreaseFun()
-        {
-
-        }
 
 
     }

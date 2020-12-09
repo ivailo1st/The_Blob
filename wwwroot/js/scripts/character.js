@@ -41,7 +41,19 @@ Shadow.animate(
 
 );
 
+function giveMoney() {
+    let userCurrency = document.getElementById("textCurrency").innerHTML;
+    let newCurrency = userCurrency + 50;
+    //Fetch for Updating Character Currency
+    fetch("api/characterapi/" + newCurrency, {
+        method: "PATCH",
+        headers: { "content-type": "application/json", "accept": "application/json" }
 
+    })
+        .then(response => response.json())
+        .then(json => console.log(json)).catch(err => console.log(err));
+    document.getElementById("textCurrency").innerHTML = newCurrency;
+}
 
 
 

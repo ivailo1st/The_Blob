@@ -33,6 +33,7 @@ function updateItem(FridgeId) {
           .then(response => response.json())
           .then(json => console.log(json)).catch(err => console.log(err));
         document.getElementById("js-fridge-quantity").innerHTML = newQuantity;
+        giveMoney();
       }
       else if (data.quantity = 1) {
         console.log('nope')
@@ -43,6 +44,7 @@ function updateItem(FridgeId) {
           .then(response => response.json())
           .then(json => console.log(json)).catch(err => console.log(err));
         document.getElementById("js-fridge-item").style.display = "none";
+        giveMoney();
       }
     })
 }

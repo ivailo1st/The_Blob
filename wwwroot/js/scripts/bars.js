@@ -2,7 +2,7 @@ let hungerBar = document.getElementsByClassName('hunger-svg');
 let sleepBar = document.getElementsByClassName('sleep-svg');
 let funBar = document.getElementsByClassName('hunger-svg');
 
-setInterval(updateTime, 5000);
+setInterval(updateTime, 60000);
 
 let CharacterId = document.getElementById('js-char-value').innerHTML;
 
@@ -72,6 +72,24 @@ function updateTime() {
       );
 
       console.log(data);
+      if (data.awake == true) {
+        if (data.hunger || data.sleep || data.fun >= 80) {
+          document.getElementById("js-face").style.backgroundImage = "none";
+          document.getElementById("js-face").style.backgroundImage = "url('/pics/faces/happy.svg')";
+        }
+        else if ((data.hunger || data.sleep || data.fun >= 50) && (data.hunger && data.sleep && data.fun < 80)) {
+          document.getElementById("js-face").style.backgroundImage = "none";
+          document.getElementById("js-face").style.backgroundImage = "url('/pics/faces/average.svg')";
+        }
+        else if ((data.hunger || data.sleep || data.fun >= 30) && (data.hunger && data.sleep && data.fun < 50)) {
+          document.getElementById("js-face").style.backgroundImage = "none";
+          document.getElementById("js-face").style.backgroundImage = "url('/pics/faces/sad.svg')";
+        }
+        else if ((data.hunger || data.sleep || data.fun >= 1) && (data.hunger && data.sleep && data.fun < 30)) {
+          document.getElementById("js-face").style.backgroundImage = "none";
+          document.getElementById("js-face").style.backgroundImage = "url('/pics/faces/angry.svg')";
+        }
+      }
 
       let newHunger;
       let newSleep;
@@ -123,8 +141,14 @@ function updateTime() {
           headers: { "Content-Type": "application/json", "Accept": "application/json" },
           body: JSON.stringify(updateBars)
         });
-      }
+
+      };
+
+
     });
+
+
+
 
 
 

@@ -79,6 +79,23 @@ function updateTime() {
 
       //If the blob is awake all bars decreasing
       if ((hour >= 1) && (data.awake == true)) {
+        if (data.hunger || data.sleep || data.fun >= 80) {
+          document.getElementById("js-face").style.backgroundImage = "none";
+          document.getElementById("js-face").style.backgroundImage = "url('/pics/faces/happy.svg')";
+        }
+        else if ((data.hunger || data.sleep || data.fun >= 50) && (data.hunger && data.sleep && data.fun < 80)) {
+          document.getElementById("js-face").style.backgroundImage = "none";
+          document.getElementById("js-face").style.backgroundImage = "url('/pics/faces/average.svg')";
+        }
+        else if ((data.hunger || data.sleep || data.fun >= 30) && (data.hunger && data.sleep && data.fun < 50)) {
+          document.getElementById("js-face").style.backgroundImage = "none";
+          document.getElementById("js-face").style.backgroundImage = "url('/pics/faces/sad.svg')";
+        }
+        else if ((data.hunger || data.sleep || data.fun >= 1) && (data.hunger && data.sleep && data.fun < 30)) {
+          document.getElementById("js-face").style.backgroundImage = "none";
+          document.getElementById("js-face").style.backgroundImage = "url('/pics/faces/angry.svg')";
+        }
+
         newHunger = Math.max((data.hunger - (hour * 10)), 1);
         newSleep = Math.max((data.sleep - (hour * 10)), 1);
         newFun = Math.max((data.fun - (hour * 10)), 1);
@@ -123,8 +140,14 @@ function updateTime() {
           headers: { "Content-Type": "application/json", "Accept": "application/json" },
           body: JSON.stringify(updateBars)
         });
-      }
+
+      };
+
+
     });
+
+
+
 
 
 

@@ -2,7 +2,7 @@
 let Face = document.getElementById('js-face');
 Face.animate(
   [
-    { transform: 'translateY(opx)' },
+    { transform: 'translateY(0px)' },
     { transform: 'translateY(-15px)' }
   ],
   {
@@ -16,7 +16,7 @@ Face.animate(
 let Character = document.getElementById('js-character');
 Character.animate(
   [
-    { transform: 'translateY(opx)' },
+    { transform: 'translateY(0px)' },
     { transform: 'translateY(-15px)' }
   ],
   {
@@ -42,7 +42,7 @@ Shadow.animate(
 );
 
 function giveMoney() {
-    let userCurrency = document.getElementById("textCurrency").innerHTML;
+    let userCurrency = parseInt(document.getElementById("textCurrency").innerHTML);
     let newCurrency = userCurrency + 50;
     //Fetch for Updating Character Currency
     fetch("api/characterapi/" + newCurrency, {

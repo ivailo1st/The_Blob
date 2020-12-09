@@ -3,6 +3,15 @@
   document.getElementById('js-store-element').style.display = "block";
 };
 
+function addItemSignal() {
+  document.getElementById("id-item-signal").style.display = "block";
+  setTimeout(closeItemSignal, 1000);
+}
+
+function closeItemSignal() {
+  document.getElementById("id-item-signal").style.display = "none";
+}
+
 function addItem(itemName, itemPercent, itemURL, itemPrice, charID) {
   //Fridge Item Logic
   let addQuery = {
@@ -75,6 +84,7 @@ function addItem(itemName, itemPercent, itemURL, itemPrice, charID) {
       .then(response => response.json())
       .then(json => console.log(json)).catch(err => console.log(err));
     document.getElementById("textCurrency").innerHTML = newCurrency;
+    addItemSignal();
   }
   else {
     alert("Not Enough Money");

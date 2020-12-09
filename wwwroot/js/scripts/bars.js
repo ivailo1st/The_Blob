@@ -14,9 +14,13 @@ function ifAsleep() {
       let newAwake = !data.awake;
       if (newAwake) {
         document.getElementById("bottomSleepIcon").style.filter = "brightness(0.75)";
+        document.getElementById("js-face").style.backgroundImage = "none";
+        document.getElementById("js-face").style.backgroundImage = "url('/pics/faces/sleeping.svg')";
       }
       else {
         document.getElementById("bottomSleepIcon").style.filter = "brightness(1)";
+        document.getElementById("js-face").style.backgroundImage = "none";
+        document.getElementById("js-face").style.backgroundImage = "url('/pics/faces/average.svg')";
       }
     });
 }
@@ -28,9 +32,13 @@ function goToSleep() {
       let newAwake = !data.awake
       if (newAwake) {
         document.getElementById("bottomSleepIcon").style.filter = "brightness(1)";
+        document.getElementById("js-face").style.backgroundImage = "none";
+        document.getElementById("js-face").style.backgroundImage = "url('/pics/faces/average.svg')";
       }
       else {
         document.getElementById("bottomSleepIcon").style.filter = "brightness(0.75)";
+        document.getElementById("js-face").style.backgroundImage = "none";
+        document.getElementById("js-face").style.backgroundImage = "url('/pics/faces/sleeping.svg')";
       }
       fetch("api/CharacterAPI/Bars/" + newAwake, {
         method: "PATCH",

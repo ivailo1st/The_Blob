@@ -2,6 +2,14 @@
   display: none;
 }
 
+.item-signal {
+  display: none;
+  position: absolute;
+  top: 5px;
+  font-size: 100px;
+  color: rgb(33, 153, 33);
+}
+
 .store-name {
   text-align: center;
   margin-top: -50px;

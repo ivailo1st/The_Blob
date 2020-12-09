@@ -58,7 +58,6 @@ function updateTime() {
         console.log(newHunger, newLogDate);
 
         //If the bars are above 0 decrease bars
-        if (newSleep >= 1 && newFun >= 1 && newHunger >= 1) {
           let updateBars = [
             newHunger,
             newSleep,
@@ -76,90 +75,25 @@ function updateTime() {
 
 
           // If bar values are lower then 1 set to 1 - so blob doesnt die (for now :D)
-        } else {
-          let updateBars = [
-            1,
-            1,
-            1,
-            newLogDate
-          ]
-
-          fetch("api/CharacterAPI/", {
-            method: "PATCH",
-            headers: { "Content-Type": "application/json", "Accept": "application/json" },
-            body: JSON.stringify(updateBars)
-          });
-        };
 
         //If blob is sleeping decrease only fun and hunger + increase sleep
       } else if ((hour >= 1) && (data.awake == false)) {
-        newHunger = Math.max((data.hunger - (hour * 10)), 1);
-        newFun = Math.max((data.fun - (hour * 10)), 1);
-        newSleep = data.sleep + (hour * 10);
+            newHunger = Math.max((data.hunger - (hour * 10)), 1);
+            newFun = Math.max((data.fun - (hour * 10)), 1);
+            newSleep = Math.min((data.sleep + (hour * 10)),100);
 
-        // Allow increase until sleep is 100
-        if (newSleep <= 100) {
-          if (newFun < 1 && newHunger < 1) {
             let updateBars = [
-              1,
-              1,
-              newSleep,
-              newLogDate
+                newHunger,
+                newFun,
+                newSleep,
+                newLogDate
             ]
 
             fetch("api/CharacterAPI/", {
-              method: "PATCH",
-              headers: { "Content-Type": "application/json", "Accept": "application/json" },
-              body: JSON.stringify(updateBars)
+                method: "PATCH",
+                headers: { "Content-Type": "application/json", "Accept": "application/json" },
+                body: JSON.stringify(updateBars)
             });
-          }
-          else {
-            let updateBars = [
-              newHunger,
-              newFun,
-              newSleep,
-              newLogDate
-            ]
-
-            fetch("api/CharacterAPI/", {
-              method: "PATCH",
-              headers: { "Content-Type": "application/json", "Accept": "application/json" },
-              body: JSON.stringify(updateBars)
-            });
-          }
-          // Dont allow the sleep to increase over 100
-        } else {
-          if (newFun < 1 && newHunger < 1) {
-            let updateBars = [
-              1,
-              1,
-              100,
-              newLogDate
-            ]
-            fetch("api/CharacterAPI", {
-              method: "PATCH",
-              headers: { "Content-Type": "application/json", "Accept": "application/json" },
-              body: JSON.stringify(updateBars)
-            });
-
-          } else {
-            let updateBars = [
-              newHunger,
-              newFun,
-              100,
-              newLogDate
-
-            ]
-            fetch("api/CharacterAPI/", {
-              method: "PATCH",
-              headers: { "Content-Type": "application/json", "Accept": "application/json" },
-              body: JSON.stringify(updateBars)
-
-            });
-          }
-
-
-        }
       }
     });
 }

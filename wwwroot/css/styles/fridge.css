@@ -10,6 +10,7 @@
   font-style: normal;
   font-weight: bold;
   font-size: 35px;
+  z-index: 1;
 }
 
 #js-fridge-element {
@@ -21,7 +22,7 @@
   display: grid;
   position: absolute;
   bottom: 0;
-  z-index: -1;
+  z-index: 0;
   width: 100%;
   height: 40%;
   background-color: var(--beige-transparent);

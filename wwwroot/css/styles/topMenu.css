@@ -66,7 +66,7 @@
 }
 
 .topMenuComponent--statBars-barImage {
-  margin-top: 5rem;
+  margin-top: 55px;
   position: absolute;
 }
 
@@ -81,3 +81,13 @@
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   }
 }
+
+.bargrey {
+    position: relative;
+}
+
+.barfill {
+ position: absolute;   
+}
+
+

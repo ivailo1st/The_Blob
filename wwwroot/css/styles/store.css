@@ -5,7 +5,8 @@
 .item-signal {
   display: none;
   position: absolute;
-  top: 5px;
+  top: 20%;
+  margin-left: 30%;
   font-size: 100px;
   color: rgb(33, 153, 33);
 }

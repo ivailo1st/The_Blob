@@ -25,12 +25,14 @@ function updateItem(FridgeId) {
 
       if (data.quantity > 1) {
         console.log(data.quantity)
-        fetch("api/fridgeapi" + FridgeId, {
+        let newQuantity = data.quantity - 1;
+        fetch("api/fridgeapi" + FridgeId + newQuantity, {
           method: "PATCH",
-          headers: { "Content-Type": "application/json", "Accept": "application/json" }
+          headers: { "Content-Type": "application/json", "Accept": "application/json" },
         })
           .then(response => response.json())
           .then(json => console.log(json)).catch(err => console.log(err));
+        document.getElementById("js-fridge-quantity").innerHTML = newQuantity;
       }
       else if (data.quantity = 1) {
         console.log('nope')
@@ -40,8 +42,7 @@ function updateItem(FridgeId) {
         })
           .then(response => response.json())
           .then(json => console.log(json)).catch(err => console.log(err));
-
-
+        document.getElementById("js-fridge-item").style.display = "none";
       }
     })
 }

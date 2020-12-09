@@ -1,15 +1,15 @@
 ﻿.fridge-name {
-    bottom: 40%;
-    left: 0;
-    position: fixed;
-    text-align: center;
-    color: var(--dark-green);
-    font-family: var(--body-font);
-    margin: auto;
-    right: 0;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 35px;
+  bottom: 35%;
+  left: 0;
+  position: fixed;
+  text-align: center;
+  color: var(--dark-green);
+  font-family: var(--body-font);
+  margin: auto;
+  right: 0;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 35px;
 }
 
 #js-fridge-element {
@@ -17,12 +17,12 @@
 }
 
 .fridge-section {
+  padding: 40px 5px;
   display: grid;
   position: absolute;
   bottom: 0;
   z-index: -1;
   width: 100%;
-  padding: 15px;
   height: 40%;
   background-color: var(--beige-transparent);
   border-top-left-radius: 10px;
@@ -34,7 +34,7 @@
 }
 
 .fridge-item {
-  padding:0;
+  padding: 0;
   justify-self: center;
   list-style: none;
 }
@@ -72,5 +72,5 @@
 }
 
 .corner-item {
-   float:right;
+  float: right;
 }

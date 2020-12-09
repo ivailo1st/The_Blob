@@ -14,7 +14,7 @@
   position: absolute;
   bottom: 0;
   width: 100%;
-  padding: 15px;
+  padding: 40px 5px;
   height: 40%;
   z-index: -1;
   background-color: var(--beige-transparent);
@@ -31,8 +31,8 @@
   border: none;
 }
 .store-item {
-  padding:0;
-  justify-self:center;
+  padding: 0;
+  justify-self: center;
   list-style: none;
 }
 

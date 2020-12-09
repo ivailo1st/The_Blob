@@ -3,6 +3,15 @@
   document.getElementById('js-store-element').style.display = "block";
 };
 
+function addItemSignal() {
+  document.getElementById("id-item-signal").style.display = "block";
+  setTimeout(closeItemSignal, 1000);
+}
+
+function closeItemSignal() {
+  document.getElementById("id-item-signal").style.display = "none";
+}
+
 function addItem(itemName, itemPercent, itemURL, itemPrice, charID) {
   //Fridge Item Logic
   let addQuery = {
@@ -32,31 +41,34 @@ function addItem(itemName, itemPercent, itemURL, itemPrice, charID) {
           }
           else {
             //Fetch for Creating a new Fridge Item
-            fetch("api/fridgeapi", {
-              method: "POST",
-              headers: { "Content-Type": "application/json", "Accept": "application/json" },
-              body: JSON.stringify(addQuery)
-
-            })
-              .then(response => response.json())
-              .then(data => {
-                let junctionQuery = {
-                  characterId: charID,
-                  character: null,
-                  fridgeId: fridgeID,
-                  fridge: null
-                }
-                //Fetch for Creating new CharacterFridge item
-                fetch("api/CharacterFridgeAPI", {
+              fetch("api/fridgeapi", {
                   method: "POST",
                   headers: { "Content-Type": "application/json", "Accept": "application/json" },
-                  body: JSON.stringify(junctionQuery)
+                  body: JSON.stringify(addQuery)
 
-                })
-                  .then(response => response.json())
-                  .then(data => console.log(data)).catch(err => console.log(err));
+              })
+            .then(response => response.json())
+            .then(data => {
+                fetch("api/fridgeapi/" + itemName)
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log(data.fridgeId);
 
-              }).catch(err => console.log(err));
+                        let junctionQuery = {
+                            characterId: charID,
+                            character: null,
+                            fridgeId: data.fridgeId,
+                            fridge: null
+                        }
+                        //Fetch for Creating new CharacterFridge item
+                        fetch("api/CharacterFridgeAPI", {
+                            method: "POST",
+                            headers: { "Content-Type": "application/json", "Accept": "application/json" },
+                            body: JSON.stringify(junctionQuery)
+
+                        })
+                    });
+            });
           }
         });
     });
@@ -75,6 +87,7 @@ function addItem(itemName, itemPercent, itemURL, itemPrice, charID) {
       .then(response => response.json())
       .then(json => console.log(json)).catch(err => console.log(err));
     document.getElementById("textCurrency").innerHTML = newCurrency;
+    addItemSignal();
   }
   else {
     alert("Not Enough Money");

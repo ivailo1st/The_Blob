@@ -16,30 +16,27 @@
 @*<p>Current session id: @Model.user.UserId; email: @Model.user.Email; password: @Model.user.Password;</p>*@
 <div id="js-char-value" style="display:none">@Model.character.CharacterId</div>
 
-<div class="character-floor">
-    <div class="character-container">
-        <svg class="character-element" id="js-character" x="0px" y="0px"
-             viewBox="0 0 200 200" style="enable-background:new 0 0 200 200;" xml:space="preserve">
+
+<div class="character-container">
+    <svg class="character-element" id="js-character" x="0px" y="0px"
+        viewBox="0 0 200 200" style="enable-background:new 0 0 200 200;" xml:space="preserve">
         <path id="div1" class="st0" d="M149.4,37.5c9,11.1,6.7,32.1,10.4,52.1c3.6,20,13.1,39,9,53.9c-4.1,14.8-22,25.5-39.6,28.3
-   c-17.7,2.9-35.2-2.1-48.2-10.7c-13-8.6-21.4-20.7-26-33s-5.5-24.7-4.8-38.4c0.6-13.6,2.7-28.5,11.3-39.7C70,38.8,85,31.3,102.6,28.1
-   C120.2,25,140.5,26.3,149.4,37.5z" />
-
-
-
-
-
-
+       c-17.7,2.9-35.2-2.1-48.2-10.7c-13-8.6-21.4-20.7-26-33s-5.5-24.7-4.8-38.4c0.6-13.6,2.7-28.5,11.3-39.7C70,38.8,85,31.3,102.6,28.1
+       C120.2,25,140.5,26.3,149.4,37.5z" />
 
         <div class="faces" id="js-face"></div>
         <div class="shadow-element" id="js-shadow"></div>
 
- </svg>
+    </svg>
 
-    </div>
-    <div class="menu-container">
-        @{ await Html.RenderPartialAsync("_BotMenuPartial");}
+
+    <div class="character-floor">
+        <div class="menu-container">
+            @{ await Html.RenderPartialAsync("_BotMenuPartial");}
+        </div>
     </div>
 </div>
+   
 
 @{await Html.RenderPartialAsync("_FridgePartial");}
 

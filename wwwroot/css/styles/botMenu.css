@@ -6,7 +6,6 @@
 .menu {
   position: relative;
   margin-top: 26px;
-  grid-area: footer;
 }
 
 .menu-inner {
@@ -17,7 +16,7 @@
 
 .menu-open:checked + .menu-item {
   position: static;
-  
+  display: flex;
   align-content: center;
   justify-content: center;
   height: 125px;

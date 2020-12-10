@@ -96,7 +96,7 @@ function giveMoney() {
 
 
 function sendEmail() {
-  let userEmail = document.getElementById("js-user-email").innerHTML;
+  let userEmail = document.getElementById('js-user-email').innerHTML;
   console.log(userEmail)
   Email.send({
     Host: "	smtp.elasticemail.com",
@@ -105,7 +105,7 @@ function sendEmail() {
     To: userEmail,
     From: "gabcoo1110@gmail.com",
     Subject: "Your Blob is almost dead",
-    Body: "Don't forget to take care of your Blob, ",
+    Body: "Don't forget to take care of your Blob, it needs your love and attention.",
   }).then(
     message => alert(message)
   )

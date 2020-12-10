@@ -1,13 +1,13 @@
 function openFridge() {
-    fetch('/Store/Fridge')
-        .then(function (response) {
-            return response.text();
-        })
-        .then(function (body) {
-            document.getElementById("fridgeSpace").innerHTML = body;
-            document.getElementById('js-fridge-element').style.display = "block";
-            document.getElementById('js-store-element').style.display = "none";
-        });
+  fetch('/Store/Fridge')
+    .then(function (response) {
+      return response.text();
+    })
+    .then(function (body) {
+      document.getElementById("fridgeSpace").innerHTML = body;
+      document.getElementById('js-fridge-element').style.display = "block";
+      document.getElementById('js-store-element').style.display = "none";
+    });
 }
 
 function updateItem(FridgeId) {
@@ -29,16 +29,23 @@ function updateItem(FridgeId) {
         })
           .then(response => response.json())
           .then(json => console.log(json)).catch(err => console.log(err));
-          openFridge();
-          giveMoney();
+        openFridge();
+        giveMoney();
 
         fetch("api/CharacterAPI/" + CharacterId)
           .then(response => response.json())
           .then(data => {
 
             let newHunger = Math.min((data.hunger + foodPercent), 100);
+            let newSleep = data.sleep;
+            let newFun = data.fun;
+            let newLogDate = data.logDate;
+
             let updateHunger = [
-              newHunger
+              newHunger,
+              newSleep,
+              newFun,
+              newLogDate
             ]
             fetch("api/CharacterAPI/", {
               method: "PATCH",
@@ -57,17 +64,24 @@ function updateItem(FridgeId) {
           headers: { "Content-Type": "application/json", "Accept": "application/json" }
         })
           .then(response => response.json())
-            .then(json => { openFridge(); console.log(json); }).catch(err => console.log(err));
-          
-          giveMoney();
+          .then(json => { openFridge(); console.log(json); }).catch(err => console.log(err));
+
+        giveMoney();
 
         fetch("api/CharacterAPI/" + CharacterId)
           .then(response => response.json())
           .then(data => {
 
-            let newHunger = Math.min((data.hunger + data.hungerPercentage), 100);
+            let newHunger = Math.min((data.hunger + foodPercent), 100);
+            let newSleep = data.sleep;
+            let newFun = data.fun;
+            let newLogDate = data.logDate;
+
             let updateHunger = [
-              newHunger
+              newHunger,
+              newSleep,
+              newFun,
+              newLogDate
             ]
             fetch("api/CharacterAPI/", {
               method: "PATCH",

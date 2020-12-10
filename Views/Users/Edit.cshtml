@@ -13,14 +13,14 @@
 </head>
 <body>
     <div class="login-element">
-        <h4>Account</h4>
+        <strong class="logo-welcome">Account</strong>
         
         <hr />
             <div>
                <a asp-controller="main" asp-action="Index"><img src="~/pics/icon/close.svg" class="close-btn" /></a>
             </div>
             <br />
-            <div id="js-user-email">@Model.user.Email</div>
+            
                   <form asp-action="Edit">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                     <input type="hidden" asp-for="user.UserId" />

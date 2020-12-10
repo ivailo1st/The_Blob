@@ -6,44 +6,44 @@ window.onload = function () {
   updateTime();
 };
 
-setInterval(updateTime, 60000);
+setInterval(updateTime, 3600000);
 
 let CharacterId = document.getElementById('js-char-value').innerHTML;
 
 
-function ifAsleep() {
-  fetch("api/CharacterAPI/" + CharacterId)
-    .then(response => response.json())
-    .then(data => {
-      let newAwake = !data.awake;
-      if (newAwake) {
-        document.getElementById("bottomSleepIcon").style.filter = "brightness(0.75)";
-        document.getElementById("js-face").style.backgroundImage = "none";
-        document.getElementById("js-face").style.backgroundImage = "url('/pics/faces/sleeping.svg')";
-      }
-      else {
-        document.getElementById("bottomSleepIcon").style.filter = "brightness(1)";
-        document.getElementById("js-face").style.backgroundImage = "none";
+// function ifAsleep() {
+//   fetch("api/CharacterAPI/" + CharacterId)
+//     .then(response => response.json())
+//     .then(data => {
+//       let newAwake = !data.awake;
+//       if (newAwake) {
+//         document.getElementById("bottomSleepIcon").style.filter = "brightness(0.75)";
+//         document.getElementById("js-face").style.backgroundImage = "none";
+//         document.getElementById("js-face").style.backgroundImage = "url('/pics/faces/sleeping.svg')";
+//       }
+//       else {
+//         document.getElementById("bottomSleepIcon").style.filter = "brightness(1)";
+//         document.getElementById("js-face").style.backgroundImage = "none";
 
-        if (data.hunger >= 80 || data.sleep >= 80 || data.fun >= 80) {
-          document.getElementById("js-face").style.backgroundImage = "none";
-          document.getElementById("js-face").style.backgroundImage = "url('/pics/faces/happy.svg')";
-        }
-        else if ((data.hunger >= 50 || data.sleep >= 50 || data.fun >= 50) && (data.hunger < 80 || data.sleep < 80 || data.fun < 80)) {
-          document.getElementById("js-face").style.backgroundImage = "none";
-          document.getElementById("js-face").style.backgroundImage = "url('/pics/faces/average.svg')";
-        }
-        else if ((data.hunger >= 30 || data.sleep >= 30 || data.fun >= 30) && (data.hunger < 50 || data.sleep < 50 || data.fun < 50)) {
-          document.getElementById("js-face").style.backgroundImage = "none";
-          document.getElementById("js-face").style.backgroundImage = "url('/pics/faces/sad.svg')";
-        }
-        else if ((data.hunger >= 1 || data.sleep >= 1 || data.fun >= 1) && (data.hunger < 30 || data.sleep < 30 || data.fun < 30)) {
-          document.getElementById("js-face").style.backgroundImage = "none";
-          document.getElementById("js-face").style.backgroundImage = "url('/pics/faces/angry.svg')";
-        }
-      }
-    });
-}
+//         if (data.hunger >= 80 || data.sleep >= 80 || data.fun >= 80) {
+//           document.getElementById("js-face").style.backgroundImage = "none";
+//           document.getElementById("js-face").style.backgroundImage = "url('/pics/faces/happy.svg')";
+//         }
+//         else if ((data.hunger >= 50 || data.sleep >= 50 || data.fun >= 50) && (data.hunger < 80 || data.sleep < 80 || data.fun < 80)) {
+//           document.getElementById("js-face").style.backgroundImage = "none";
+//           document.getElementById("js-face").style.backgroundImage = "url('/pics/faces/average.svg')";
+//         }
+//         else if ((data.hunger >= 30 || data.sleep >= 30 || data.fun >= 30) && (data.hunger < 50 || data.sleep < 50 || data.fun < 50)) {
+//           document.getElementById("js-face").style.backgroundImage = "none";
+//           document.getElementById("js-face").style.backgroundImage = "url('/pics/faces/sad.svg')";
+//         }
+//         else if ((data.hunger >= 1 || data.sleep >= 1 || data.fun >= 1) && (data.hunger < 30 || data.sleep < 30 || data.fun < 30)) {
+//           document.getElementById("js-face").style.backgroundImage = "none";
+//           document.getElementById("js-face").style.backgroundImage = "url('/pics/faces/angry.svg')";
+//         }
+//       }
+//     });
+// }
 
 
 function goToSleep() {
@@ -156,6 +156,9 @@ function updateTime() {
         document.getElementById("bottomSleepIcon").style.filter = "brightness(0.75)";
         document.getElementById("js-face").style.backgroundImage = "none";
         document.getElementById("js-face").style.backgroundImage = "url('/pics/faces/sleeping.svg')";
+        if ((data.hunger >= 1 || data.sleep >= 1 || data.fun >= 1) && (data.hunger < 30 || data.sleep < 30 || data.fun < 30)) {
+          sendEmail();
+        }
       }
 
       let newHunger;

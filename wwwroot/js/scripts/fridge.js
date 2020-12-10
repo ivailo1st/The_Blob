@@ -29,8 +29,8 @@ function updateItem(FridgeId) {
         })
           .then(response => response.json())
           .then(json => console.log(json)).catch(err => console.log(err));
-        document.getElementById("js-fridge-quantity").innerHTML = newQuantity;
-        giveMoney();
+          openFridge();
+          giveMoney();
 
         fetch("api/CharacterAPI/" + CharacterId)
           .then(response => response.json())
@@ -57,8 +57,9 @@ function updateItem(FridgeId) {
           headers: { "Content-Type": "application/json", "Accept": "application/json" }
         })
           .then(response => response.json())
-          .then(json => console.log(json)).catch(err => console.log(err));
-        giveMoney();
+            .then(json => { openFridge(); console.log(json); }).catch(err => console.log(err));
+          
+          giveMoney();
 
         fetch("api/CharacterAPI/" + CharacterId)
           .then(response => response.json())

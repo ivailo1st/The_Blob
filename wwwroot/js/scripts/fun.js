@@ -1,6 +1,7 @@
 
 element = document.getElementById("js-fun-item");
 
+
 element.addEventListener("click", function (e) {
   e.preventDefault;
   var audio = new Audio('../../audio/Laugh.mp3');
@@ -11,6 +12,9 @@ element.addEventListener("click", function (e) {
   void element.offsetWidth;
   // -> and re-adding the class
   element.classList.add("bounce");
+
+  setTimeout(function () { element.classList.remove("bounce"); }, 1500);
+
 
   giveMoney();
 

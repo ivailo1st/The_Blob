@@ -20,7 +20,7 @@
                <a asp-controller="main" asp-action="Index"><img src="~/pics/icon/close.svg" class="close-btn" /></a>
             </div>
             <br />
-            <div id="js-user-email">@Model.user.Email</div>
+            
                   <form asp-action="Edit">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                     <input type="hidden" asp-for="user.UserId" />

@@ -83,7 +83,7 @@ function addItem(itemName, itemPercent, itemURL, itemPrice, charID) {
                             })
                                 .then(response => response.json())
                                 .then(data => {
-                                    fetch("api/fridgeapi/" + itemName)
+                                    fetch("api/fridgeapi/specific/" + itemName)
                                         .then(response => response.json())
                                         .then(data => {
                                             console.log(data.fridgeId);

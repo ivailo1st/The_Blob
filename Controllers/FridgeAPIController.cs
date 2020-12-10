@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using The_Blob.Data;
+using The_Blob.Infrastructure;
 using The_Blob.Models;
 
 namespace The_Blob.Controllers
@@ -29,12 +30,11 @@ namespace The_Blob.Controllers
             return await _context.Fridge.ToListAsync();
         }
 
-        // GET: api/FridgeAPI/5
-        [HttpGet("{foodName}")]
-        public ActionResult<Fridge> GetFridge(string foodName)
+        [HttpGet("specific/{foodName}")]
+        public ActionResult<Fridge> GetSpecificFridge(string foodName)
         {
             SqlParameter param1 = new SqlParameter("@FoodName", foodName);
-            Fridge fridge = _context.Fridge.FromSqlRaw("Select * from fridge where foodname = @FoodName", param1).FirstOrDefault();
+            Fridge fridge = _context.Fridge.FromSqlRaw("Select * from fridge where foodname = @FoodName", param1).ToArray().LastOrDefault();
 
             if (fridge == null)
             {
@@ -42,6 +42,39 @@ namespace The_Blob.Controllers
             }
 
             return fridge;
+        }
+
+        // GET: api/FridgeAPI/5
+        [HttpGet("{foodName}")]
+        public ActionResult<Fridge> GetFridge(string foodName)
+        {
+            Character sessionCharacter = HttpContext.Session.GetJson<Character>("Character");
+            SqlParameter param1 = new SqlParameter("@FoodName", foodName);
+            List<Fridge> fridgeData = _context.Fridge.FromSqlRaw("Select * from fridge where foodname = @FoodName", param1).ToList();
+
+            Fridge fridge;
+            SqlParameter param2;
+            SqlParameter param3;
+            CharacterFridge charFridge;
+
+
+            foreach(Fridge food in fridgeData)
+            {
+                param2 = new SqlParameter("@FridgeID", food.FridgeId);
+                param3 = new SqlParameter("@CharID", sessionCharacter.CharacterId);
+
+                charFridge = _context.CharacterFridge.FromSqlRaw("Select * from characterfridge where fridgeid = @FridgeID and characterid = @CharID", param2, param3).FirstOrDefault();
+
+                if(charFridge != null)
+                {
+                    fridge = _context.Fridge.FromSqlRaw("Select * from fridge where fridgeid = @FridgeID", param2).FirstOrDefault();
+
+                    return fridge;
+                }
+
+            }
+            
+            return NotFound();
         }
 
         [HttpGet("fridge/{fridgeId}")]

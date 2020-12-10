@@ -23,7 +23,7 @@
   position: absolute;
   bottom: 0;
   width: 100%;
-  padding: 40px 5px;
+  padding: 50px 5px 30px 5px;
   height: 40%;
   z-index: 0;
   background-color: var(--beige-transparent);

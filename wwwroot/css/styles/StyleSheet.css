@@ -1,0 +1,41 @@
+﻿
+@media (min-width: 481px) and (max-width: 767px) {
+
+    * {
+        box-sizing: border-box;
+    }
+    body {
+    }
+    
+    .logo {
+        font-size:15vw;
+    }
+
+    .logo-welcome {
+        font-size: 10vw;
+    }
+    
+    .control-label {
+        font-size:6vw;
+
+    }
+
+    .form-control {
+        font-size: 5vw;
+    }
+
+    strongs-p {
+
+        font-size: 9vw;
+
+    }
+
+    .strongs {
+        font-size: 9vw;
+    }
+
+    .text-danger {
+        font-size: 6vw;
+    }
+
+}

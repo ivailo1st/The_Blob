@@ -24,12 +24,13 @@
   justify-content: center;
   height: 125px;
   opacity: 100;
+  overflow: visible;
 }
 
 .menu-item {
   position: absolute;
-  opacity: 0;
-  overflow: visible;
+  display: none;
+  overflow: hidden;
 }
 
 .menu-item img {

@@ -52,3 +52,34 @@
   align-self: center;
   background-repeat: no-repeat;
 }
+
+@media only screen and (min-width: 500px) {
+  .faces {
+    width: 165px;
+    height: 165px;
+  }
+}
+
+@media only screen and (min-width: 650px) {
+  .faces {
+    margin-top: -80%;
+  }
+  .shadow-element {
+    margin-top: -10%;
+  }
+}
+
+@media only screen and (min-width: 750px) {
+  .faces {
+    margin-top: -65%;
+  }
+}
+
+@media only screen and (min-width: 950px) {
+  .faces {
+    margin-top: -50%;
+  }
+  .shadow-element {
+    margin-top: -5%;
+  }
+}

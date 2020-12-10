@@ -1,8 +1,14 @@
 function openFridge() {
-  document.getElementById('js-fridge-element').style.display = "block";
-  document.getElementById('js-store-element').style.display = "none";
+    fetch('/Store/Fridge')
+        .then(function (response) {
+            return response.text();
+        })
+        .then(function (body) {
+            document.getElementById("fridgeSpace").innerHTML = body;
+            document.getElementById('js-fridge-element').style.display = "block";
+            document.getElementById('js-store-element').style.display = "none";
+        });
 }
-
 
 function updateItem(FridgeId) {
   var audio = new Audio('../../audio/Eating.mp3');

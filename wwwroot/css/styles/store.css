@@ -25,7 +25,7 @@
   width: 100%;
   padding: 40px 5px;
   height: 40%;
-  z-index: -1;
+  z-index: 0;
   background-color: var(--beige-transparent);
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;

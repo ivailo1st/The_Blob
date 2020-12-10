@@ -1,7 +1,23 @@
 ﻿function openStore() {
-  document.getElementById('js-fridge-element').style.display = "none";
-  document.getElementById('js-store-element').style.display = "block";
+    fetch('/Store/Store')
+        .then(function (response) {
+            return response.text();
+        })
+        .then(function (body) {
+            document.getElementById("storeSpace").innerHTML = body;
+            document.getElementById('js-store-element').style.display = "block";
+            document.getElementById('js-fridge-element').style.display = "none";
+        });
 };
+
+function closeElement(element) {
+    if (element == "store") {
+        document.getElementById('js-store-element').style.display = "none";
+    }
+    else if(element == "fridge") {
+        document.getElementById('js-fridge-element').style.display = "none";
+    }
+}
 
 function addItemSignal() {
   document.getElementById("id-item-signal").style.display = "block";
@@ -23,7 +39,8 @@ function addItem(itemName, itemPercent, itemURL, itemPrice, charID) {
   //Fetch for Finding a Fridge Item
   fetch("api/fridgeapi/" + itemName)
     .then(response => response.json())
-    .then(data => {
+      .then(data => {
+        console.log(data)
       let fridgeID = data.fridgeId
       //Fetch for finding CharacterFridge item
       fetch("api/CharacterFridgeAPI/" + fridgeID).then(response => response.json())

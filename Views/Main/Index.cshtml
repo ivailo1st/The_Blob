@@ -5,7 +5,6 @@
     ViewData["UserID"] = Model.user.UserId;
     ViewData["UserFirstLetter"] = char.ToUpper(Model.user.Email[0]);
     ViewData["Currency"] = Model.character.Currency;
-    ViewData["Additional Scripts"] = "onload = 'ifAsleep()'";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -41,10 +40,12 @@
     </div>
 </div>
    
-
-@{await Html.RenderPartialAsync("_FridgePartial");}
-
-@{ await Html.RenderPartialAsync("_StorePartial");}
+<div id="fridgeSpace">
+    @{await Html.RenderPartialAsync("_FridgePartial");}
+</div>
+<div id="storeSpace">
+    @{ await Html.RenderPartialAsync("_StorePartial");}
+</div>
 
 
 

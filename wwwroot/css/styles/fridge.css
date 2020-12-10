@@ -2,6 +2,7 @@
   bottom: 35%;
   left: 0;
   position: fixed;
+  width:80px;
   text-align: center;
   color: var(--dark-green);
   font-family: var(--body-font);

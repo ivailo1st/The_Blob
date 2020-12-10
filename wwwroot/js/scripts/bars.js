@@ -40,6 +40,7 @@ function ifAsleep() {
         else if ((data.hunger >= 1 || data.sleep >= 1 || data.fun >= 1) && (data.hunger < 30 || data.sleep < 30 || data.fun < 30)) {
           document.getElementById("js-face").style.backgroundImage = "none";
           document.getElementById("js-face").style.backgroundImage = "url('/pics/faces/angry.svg')";
+          sendEmail()
         }
       }
     });
@@ -70,6 +71,7 @@ function goToSleep() {
         else if ((data.hunger >= 1 || data.sleep >= 1 || data.fun >= 1) && (data.hunger < 30 || data.sleep < 30 || data.fun < 30)) {
           document.getElementById("js-face").style.backgroundImage = "none";
           document.getElementById("js-face").style.backgroundImage = "url('/pics/faces/angry.svg')";
+          sendEmail()
         }
       }
       else {
@@ -151,6 +153,10 @@ function updateTime() {
           document.getElementById("js-face").style.backgroundImage = "url('/pics/faces/angry.svg')";
           sendEmail();
         }
+      } else {
+        document.getElementById("bottomSleepIcon").style.filter = "brightness(0.75)";
+        document.getElementById("js-face").style.backgroundImage = "none";
+        document.getElementById("js-face").style.backgroundImage = "url('/pics/faces/sleeping.svg')";
       }
 
       let newHunger;

@@ -11,7 +11,7 @@
     -webkit-transform: translateY(0);
   }
   40% {
-    -webkit-transform: translateY(-200px);
+    -webkit-transform: translateY(-250px);
   }
   60% {
     -webkit-transform: translateY(-200px);
@@ -26,7 +26,7 @@
     transform: translateY(0);
   }
   40% {
-    transform: translateY(-200px);
+    transform: translateY(-250px);
   }
   60% {
     transform: translateY(-200px);
@@ -34,8 +34,8 @@
 }
 
 .bounce {
-  -webkit-animation-duration: 2s;
-  animation-duration: 2s;
+  -webkit-animation-duration: 1.5s;
+  animation-duration: 1.5s;
   -webkit-animation-name: bounce;
   animation-name: bounce;
 }

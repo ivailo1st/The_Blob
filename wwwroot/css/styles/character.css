@@ -30,6 +30,7 @@
 }
 
 .character-floor {
+  overflow: visible;
   position: absolute;
   bottom: 0;
   display: grid;

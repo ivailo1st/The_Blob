@@ -11,4 +11,6 @@
 .body {
   background-color: var(--beige);
   font-family: var(--body-font);
+  max-width:900px;
+  
 }

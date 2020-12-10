@@ -1,17 +1,20 @@
 ﻿.menu-component {
   position: static;
   margin-top: 140px;
+  overflow: visible;
 }
 
 .menu {
   position: relative;
   margin-top: 26px;
+  overflow: visible;
 }
 
 .menu-inner {
   position: relative;
   overflow: hidden;
   width: 100%;
+  overflow: visible;
 }
 
 .menu-open:checked + .menu-item {
@@ -21,11 +24,13 @@
   justify-content: center;
   height: 125px;
   opacity: 100;
+  overflow: visible;
 }
 
 .menu-item {
   position: absolute;
-  opacity: 0;
+  display: none;
+  overflow: hidden;
 }
 
 .menu-item img {

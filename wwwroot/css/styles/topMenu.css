@@ -53,7 +53,8 @@
 }
 
 .topMenuComponent--statBars .sleep-svg,
-.topMenuComponent--statBars svg.volleyball-svg {
+.topMenuComponent--statBars svg.volleyball-svg,
+.topMenuComponent--statBars .hunger-svg{
   margin-left: 6px;
 }
 

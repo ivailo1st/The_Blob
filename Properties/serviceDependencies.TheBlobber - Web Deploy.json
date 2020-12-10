@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "mssql1": {
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/blob/databases/Blob-01",
+      "type": "mssql.azure",
+      "connectionId": "BlobContext",
+      "secretStore": "AzureAppSettings"
+    }
+  }
+}

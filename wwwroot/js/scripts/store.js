@@ -94,7 +94,7 @@ function addItem(itemName, itemPercent, itemURL, itemPrice, charID) {
   let userCurrency = parseInt(document.getElementById("textCurrency").innerHTML);
   let newCurrency = userCurrency - itemPrice;
   console.log(newCurrency);
-  if (newCurrency > 0) {
+  if (newCurrency >= 0) {
     //Fetch for Updating Character Currency
     fetch("api/characterapi/" + newCurrency, {
       method: "PATCH",

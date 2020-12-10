@@ -133,7 +133,8 @@ function updateTime() {
       }, 6)
 
       console.log(data);
-      if (data.awake) {
+      if (data.awake == true) {
+
         if (data.hunger >= 80 || data.sleep >= 80 || data.fun >= 80) {
           document.getElementById("js-face").style.backgroundImage = "none";
           document.getElementById("js-face").style.backgroundImage = "url('/pics/faces/happy.svg')";
@@ -151,6 +152,10 @@ function updateTime() {
           document.getElementById("js-face").style.backgroundImage = "url('/pics/faces/angry.svg')";
           sendEmail();
         }
+      } else {
+        document.getElementById("bottomSleepIcon").style.filter = "brightness(0.75)";
+        document.getElementById("js-face").style.backgroundImage = "none";
+        document.getElementById("js-face").style.backgroundImage = "url('/pics/faces/sleeping.svg')";
       }
 
       let newHunger;
